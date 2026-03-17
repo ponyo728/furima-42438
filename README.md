@@ -25,7 +25,7 @@ has_many :orders
 |category_id       |string    |null: false|
 |condition_id      |string    |null: false|
 |shipping_cost_id  |integer   |null: false|
-|shipping_region_id|string    |null: false|
+|prefecture_id     |string    |null: false|
 |shipping_time_id  |string    |null: false|
 |price             |integer   |null: false|
 |user              |references|null: false, foreign_key: true|
@@ -52,7 +52,7 @@ has_one :address
 |Column          |Type  |Options       |
 |----------------|------|--------------|
 |post_code       |string|null: false   |
-|prefectures_id  |string|null: false   |
+|prefecture_id  |string|null: false   |
 |municipalities  |string|null: false   |
 |street_address  |string|null: false   |
 |building_name   |string|              |
