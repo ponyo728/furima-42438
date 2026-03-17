@@ -52,7 +52,7 @@ has_one :address
 |Column          |Type  |Options       |
 |----------------|------|--------------|
 |post_code       |string|null: false   |
-|prefectures     |string|null: false   |
+|prefectures_id  |string|null: false   |
 |municipalities  |string|null: false   |
 |street_address  |string|null: false   |
 |building_name   |string|              |
