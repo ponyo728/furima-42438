@@ -6,7 +6,9 @@
 |email           |string|unique: true, null: false|
 |encrypted_password|string|null: false|
 |first_name        |string|null: false|
+|first_name_kana   |string|null: false|
 |last_name         |string|null: false|
+|last_name_kana    |string|null: false|
 |birth_date        |date  |null: false|
 
 
@@ -16,18 +18,17 @@ has_many :orders
 
 ## items
 
-|Column         |Type      |Options    |
-|---------------|----------|-----------|
-|image          |string    |null: false|
-|name           |string    |null: false|
-|description    |text      |null: false|
-|category       |string    |null: false|
-|condition      |string    |null: false|
-|shipping_cost  |integer   |null: false|
-|shipping_region|string    |null: false|
-|shipping_time  |string    |null: false|
-|price          |integer   |null: false|
-|user           |references|null: false, foreign_key|
+|Column            |Type      |Options    |
+|------------------|----------|-----------|
+|name              |string    |null: false|
+|description       |text      |null: false|
+|category_id       |string    |null: false|
+|condition_id      |string    |null: false|
+|shipping_cost_id  |integer   |null: false|
+|shipping_region_id|string    |null: false|
+|shipping_time_id  |string    |null: false|
+|price             |integer   |null: false|
+|user              |references|null: false, foreign_key: true|
 
 
 ### Association
@@ -38,13 +39,13 @@ has_one :order
 
 |Column |Type      |Options                |
 |-------|----------|-----------------------|
-|user   |references|null:false, foreign_key|
-|item   |references|null:false, foreign_key|
+|user   |references|null: false, foreign_key: true|
+|item   |references|null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
 belongs_to :item
-belongs_to :address
+has_one :address
 
 ## addresses
 
@@ -54,9 +55,10 @@ belongs_to :address
 |prefectures     |string|null: false   |
 |municipalities  |string|null: false   |
 |street_address  |string|null: false   |
-|building_name   |string|optional: true|
+|building_name   |string|              |
 |telephone_number|string|null: false   |
+|user            |references|null: false, foreign_key: true|
 
 
 ### Association
-has_many :orders
+belongs_to :order
