@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-    redirect_to item_path(@item)
+      redirect_to item_path(@item)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,9 +41,9 @@ class ItemsController < ApplicationController
   end
 
   def check_owner
-    if current_user != @item.user
-      redirect_to root_path
-    end
+    return unless current_user != @item.user
+
+    redirect_to root_path
   end
 
   def item_params
