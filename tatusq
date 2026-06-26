@@ -1,0 +1,2128 @@
+[1mdiff --git a/Gemfile b/Gemfile[m
+[1mindex b382709..dae9c03 100644[m
+[1m--- a/Gemfile[m
+[1m+++ b/Gemfile[m
+[36m@@ -1,86 +1,86 @@[m
+[31m-source "https://rubygems.org"[m
+[31m-[m
+[31m-ruby "3.2.0"[m
+[31m-[m
+[31m-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"[m
+[31m-gem "rails", "~> 7.1.0"[m
+[31m-[m
+[31m-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails][m
+[31m-gem "sprockets-rails"[m
+[31m-[m
+[31m-# Use mysql as the database for Active Record[m
+[31m-gem "mysql2", "~> 0.5"[m
+[31m-[m
+[31m-# Use the Puma web server [https://github.com/puma/puma][m
+[31m-gem "puma", ">= 5.0"[m
+[31m-[m
+[31m-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails][m
+[31m-gem "importmap-rails"[m
+[31m-[m
+[31m-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev][m
+[31m-gem "turbo-rails"[m
+[31m-[m
+[31m-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev][m
+[31m-gem "stimulus-rails"[m
+[31m-[m
+[31m-# Build JSON APIs with ease [https://github.com/rails/jbuilder][m
+[31m-gem "jbuilder"[m
+[31m-[m
+[31m-# Use Redis adapter to run Action Cable in production[m
+[31m-# gem "redis", ">= 4.0.1"[m
+[31m-[m
+[31m-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis][m
+[31m-# gem "kredis"[m
+[31m-[m
+[31m-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword][m
+[31m-# gem "bcrypt", "~> 3.1.7"[m
+[31m-[m
+[31m-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem[m
+[31m-gem "tzinfo-data", platforms: %i[ windows jruby ][m
+[31m-[m
+[31m-# Reduces boot times through caching; required in config/boot.rb[m
+[31m-gem "bootsnap", require: false[m
+[31m-[m
+[31m-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images][m
+[31m-# gem "image_processing", "~> 1.2"[m
+[31m-[m
+[31m-group :development, :test do[m
+[31m-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem[m
+[31m-  gem "debug", platforms: %i[ mri windows ][m
+[31m-  gem 'rspec-rails', '~> 4.0.0'[m
+[31m-  gem 'factory_bot_rails'[m
+[31m-  gem 'faker'[m
+[31m-end[m
+[31m-[m
+[31m-group :development do[m
+[31m-  # Use console on exceptions pages [https://github.com/rails/web-console][m
+[31m-  gem "web-console"[m
+[31m-[m
+[31m-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler][m
+[31m-  # gem "rack-mini-profiler"[m
+[31m-[m
+[31m-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring][m
+[31m-  # gem "spring"[m
+[31m-[m
+[31m-end[m
+[31m-[m
+[31m-group :test do[m
+[31m-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing][m
+[31m-  gem "capybara"[m
+[31m-  gem "selenium-webdriver"[m
+[31m-end[m
+[31m-[m
+[31m-group :development do[m
+[31m-  gem 'rubocop', require: false[m
+[31m-end[m
+[31m-[m
+[31m-group :production do[m
+[31m-  gem 'pg'[m
+[31m-end[m
+[31m-[m
+[31m-gem 'devise'[m
+[31m-[m
+[31m-gem 'mini_magick'[m
+[31m-gem 'image_processing', '~> 1.2'[m
+[31m-[m
+[32m+[m[32msource "https://rubygems.org"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mruby "3.2.0"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"[m[41m[m
+[32m+[m[32mgem "rails", "~> 7.1.0"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails][m[41m[m
+[32m+[m[32mgem "sprockets-rails"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Use mysql as the database for Active Record[m[41m[m
+[32m+[m[32mgem "mysql2", "~> 0.5"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Use the Puma web server [https://github.com/puma/puma][m[41m[m
+[32m+[m[32mgem "puma", ">= 5.0"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails][m[41m[m
+[32m+[m[32mgem "importmap-rails"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev][m[41m[m
+[32m+[m[32mgem "turbo-rails"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev][m[41m[m
+[32m+[m[32mgem "stimulus-rails"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Build JSON APIs with ease [https://github.com/rails/jbuilder][m[41m[m
+[32m+[m[32mgem "jbuilder"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Use Redis adapter to run Action Cable in production[m[41m[m
+[32m+[m[32m# gem "redis", ">= 4.0.1"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis][m[41m[m
+[32m+[m[32m# gem "kredis"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword][m[41m[m
+[32m+[m[32m# gem "bcrypt", "~> 3.1.7"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Windows does not include zoneinfo files, so bundle the tzinfo-data gem[m[41m[m
+[32m+[m[32mgem "tzinfo-data", platforms: %i[ windows jruby ][m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Reduces boot times through caching; required in config/boot.rb[m[41m[m
+[32m+[m[32mgem "bootsnap", require: false[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images][m[41m[m
+[32m+[m[32m# gem "image_processing", "~> 1.2"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mgroup :development, :test do[m[41m[m
+[32m+[m[32m  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem[m[41m[m
+[32m+[m[32m  gem "debug", platforms: %i[ mri windows ][m[41m[m
+[32m+[m[32m  gem 'rspec-rails', '~> 4.0.0'[m[41m[m
+[32m+[m[32m  gem 'factory_bot_rails'[m[41m[m
+[32m+[m[32m  gem 'faker'[m[41m[m
+[32m+[m[32mend[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mgroup :development do[m[41m[m
+[32m+[m[32m  # Use console on exceptions pages [https://github.com/rails/web-console][m[41m[m
+[32m+[m[32m  gem "web-console"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler][m[41m[m
+[32m+[m[32m  # gem "rack-mini-profiler"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  # Speed up commands on slow machines / big apps [https://github.com/rails/spring][m[41m[m
+[32m+[m[32m  # gem "spring"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mend[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mgroup :test do[m[41m[m
+[32m+[m[32m  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing][m[41m[m
+[32m+[m[32m  gem "capybara"[m[41m[m
+[32m+[m[32m  gem "selenium-webdriver"[m[41m[m
+[32m+[m[32mend[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mgroup :development do[m[41m[m
+[32m+[m[32m  gem 'rubocop', require: false[m[41m[m
+[32m+[m[32mend[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mgroup :production do[m[41m[m
+[32m+[m[32m  gem 'pg'[m[41m[m
+[32m+[m[32mend[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mgem 'devise'[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mgem 'mini_magick'[m[41m[m
+[32m+[m[32mgem 'image_processing', '~> 1.2'[m[41m[m
+[32m+[m[41m[m
+ gem 'active_hash'[m
+\ No newline at end of file[m
+[1mdiff --git a/Gemfile.lock b/Gemfile.lock[m
+[1mindex 45b6f0d..fdc3b35 100644[m
+[1m--- a/Gemfile.lock[m
+[1m+++ b/Gemfile.lock[m
+[36m@@ -1,376 +1,376 @@[m
+[31m-GEM[m
+[31m-  remote: https://rubygems.org/[m
+[31m-  specs:[m
+[31m-    actioncable (7.1.6)[m
+[31m-      actionpack (= 7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-      nio4r (~> 2.0)[m
+[31m-      websocket-driver (>= 0.6.1)[m
+[31m-      zeitwerk (~> 2.6)[m
+[31m-    actionmailbox (7.1.6)[m
+[31m-      actionpack (= 7.1.6)[m
+[31m-      activejob (= 7.1.6)[m
+[31m-      activerecord (= 7.1.6)[m
+[31m-      activestorage (= 7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-      mail (>= 2.7.1)[m
+[31m-      net-imap[m
+[31m-      net-pop[m
+[31m-      net-smtp[m
+[31m-    actionmailer (7.1.6)[m
+[31m-      actionpack (= 7.1.6)[m
+[31m-      actionview (= 7.1.6)[m
+[31m-      activejob (= 7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-      mail (~> 2.5, >= 2.5.4)[m
+[31m-      net-imap[m
+[31m-      net-pop[m
+[31m-      net-smtp[m
+[31m-      rails-dom-testing (~> 2.2)[m
+[31m-    actionpack (7.1.6)[m
+[31m-      actionview (= 7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-      cgi[m
+[31m-      nokogiri (>= 1.8.5)[m
+[31m-      racc[m
+[31m-      rack (>= 2.2.4)[m
+[31m-      rack-session (>= 1.0.1)[m
+[31m-      rack-test (>= 0.6.3)[m
+[31m-      rails-dom-testing (~> 2.2)[m
+[31m-      rails-html-sanitizer (~> 1.6)[m
+[31m-    actiontext (7.1.6)[m
+[31m-      actionpack (= 7.1.6)[m
+[31m-      activerecord (= 7.1.6)[m
+[31m-      activestorage (= 7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-      globalid (>= 0.6.0)[m
+[31m-      nokogiri (>= 1.8.5)[m
+[31m-    actionview (7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-      builder (~> 3.1)[m
+[31m-      cgi[m
+[31m-      erubi (~> 1.11)[m
+[31m-      rails-dom-testing (~> 2.2)[m
+[31m-      rails-html-sanitizer (~> 1.6)[m
+[31m-    active_hash (4.1.0)[m
+[31m-      activesupport (>= 6.1.0)[m
+[31m-    activejob (7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-      globalid (>= 0.3.6)[m
+[31m-    activemodel (7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-    activerecord (7.1.6)[m
+[31m-      activemodel (= 7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-      timeout (>= 0.4.0)[m
+[31m-    activestorage (7.1.6)[m
+[31m-      actionpack (= 7.1.6)[m
+[31m-      activejob (= 7.1.6)[m
+[31m-      activerecord (= 7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-      marcel (~> 1.0)[m
+[31m-    activesupport (7.1.6)[m
+[31m-      base64[m
+[31m-      benchmark (>= 0.3)[m
+[31m-      bigdecimal[m
+[31m-      concurrent-ruby (~> 1.0, >= 1.0.2)[m
+[31m-      connection_pool (>= 2.2.5)[m
+[31m-      drb[m
+[31m-      i18n (>= 1.6, < 2)[m
+[31m-      logger (>= 1.4.2)[m
+[31m-      minitest (>= 5.1)[m
+[31m-      mutex_m[m
+[31m-      securerandom (>= 0.3)[m
+[31m-      tzinfo (~> 2.0)[m
+[31m-    addressable (2.8.8)[m
+[31m-      public_suffix (>= 2.0.2, < 8.0)[m
+[31m-    ast (2.4.3)[m
+[31m-    base64 (0.3.0)[m
+[31m-    bcrypt (3.1.22)[m
+[31m-    benchmark (0.5.0)[m
+[31m-    bigdecimal (4.0.1)[m
+[31m-    bindex (0.8.1)[m
+[31m-    bootsnap (1.23.0)[m
+[31m-      msgpack (~> 1.2)[m
+[31m-    builder (3.3.0)[m
+[31m-    capybara (3.40.0)[m
+[31m-      addressable[m
+[31m-      matrix[m
+[31m-      mini_mime (>= 0.1.3)[m
+[31m-      nokogiri (~> 1.11)[m
+[31m-      rack (>= 1.6.0)[m
+[31m-      rack-test (>= 0.6.3)[m
+[31m-      regexp_parser (>= 1.5, < 3.0)[m
+[31m-      xpath (~> 3.2)[m
+[31m-    cgi (0.5.1)[m
+[31m-    concurrent-ruby (1.3.6)[m
+[31m-    connection_pool (3.0.2)[m
+[31m-    crass (1.0.6)[m
+[31m-    date (3.5.1)[m
+[31m-    debug (1.11.1)[m
+[31m-      irb (~> 1.10)[m
+[31m-      reline (>= 0.3.8)[m
+[31m-    devise (5.0.3)[m
+[31m-      bcrypt (~> 3.0)[m
+[31m-      orm_adapter (~> 0.1)[m
+[31m-      railties (>= 7.0)[m
+[31m-      responders[m
+[31m-      warden (~> 1.2.3)[m
+[31m-    diff-lcs (1.6.2)[m
+[31m-    drb (2.2.3)[m
+[31m-    erb (6.0.2)[m
+[31m-    erubi (1.13.1)[m
+[31m-    factory_bot (6.6.0)[m
+[31m-      activesupport (>= 6.1.0)[m
+[31m-    factory_bot_rails (6.5.1)[m
+[31m-      factory_bot (~> 6.5)[m
+[31m-      railties (>= 6.1.0)[m
+[31m-    faker (3.8.0)[m
+[31m-      i18n (>= 1.8.11, < 2)[m
+[31m-    ffi (1.17.4-x86_64-linux-gnu)[m
+[31m-    globalid (1.3.0)[m
+[31m-      activesupport (>= 6.1)[m
+[31m-    i18n (1.14.8)[m
+[31m-      concurrent-ruby (~> 1.0)[m
+[31m-    image_processing (1.14.0)[m
+[31m-      mini_magick (>= 4.9.5, < 6)[m
+[31m-      ruby-vips (>= 2.0.17, < 3)[m
+[31m-    importmap-rails (2.2.3)[m
+[31m-      actionpack (>= 6.0.0)[m
+[31m-      activesupport (>= 6.0.0)[m
+[31m-      railties (>= 6.0.0)[m
+[31m-    io-console (0.8.2)[m
+[31m-    irb (1.17.0)[m
+[31m-      pp (>= 0.6.0)[m
+[31m-      prism (>= 1.3.0)[m
+[31m-      rdoc (>= 4.0.0)[m
+[31m-      reline (>= 0.4.2)[m
+[31m-    jbuilder (2.14.1)[m
+[31m-      actionview (>= 7.0.0)[m
+[31m-      activesupport (>= 7.0.0)[m
+[31m-    json (2.18.1)[m
+[31m-    json-schema (6.1.0)[m
+[31m-      addressable (~> 2.8)[m
+[31m-      bigdecimal (>= 3.1, < 5)[m
+[31m-    language_server-protocol (3.17.0.5)[m
+[31m-    lint_roller (1.1.0)[m
+[31m-    logger (1.7.0)[m
+[31m-    loofah (2.25.0)[m
+[31m-      crass (~> 1.0.2)[m
+[31m-      nokogiri (>= 1.12.0)[m
+[31m-    mail (2.9.0)[m
+[31m-      logger[m
+[31m-      mini_mime (>= 0.1.1)[m
+[31m-      net-imap[m
+[31m-      net-pop[m
+[31m-      net-smtp[m
+[31m-    marcel (1.1.0)[m
+[31m-    matrix (0.4.3)[m
+[31m-    mcp (0.7.1)[m
+[31m-      json-schema (>= 4.1)[m
+[31m-    mini_magick (5.3.1)[m
+[31m-      logger[m
+[31m-    mini_mime (1.1.5)[m
+[31m-    minitest (6.0.2)[m
+[31m-      drb (~> 2.0)[m
+[31m-      prism (~> 1.5)[m
+[31m-    msgpack (1.8.0)[m
+[31m-    mutex_m (0.3.0)[m
+[31m-    mysql2 (0.5.7)[m
+[31m-      bigdecimal[m
+[31m-    net-imap (0.6.3)[m
+[31m-      date[m
+[31m-      net-protocol[m
+[31m-    net-pop (0.1.2)[m
+[31m-      net-protocol[m
+[31m-    net-protocol (0.2.2)[m
+[31m-      timeout[m
+[31m-    net-smtp (0.5.1)[m
+[31m-      net-protocol[m
+[31m-    nio4r (2.7.5)[m
+[31m-    nokogiri (1.19.1-x86_64-linux-gnu)[m
+[31m-      racc (~> 1.4)[m
+[31m-    orm_adapter (0.5.0)[m
+[31m-    parallel (1.27.0)[m
+[31m-    parser (3.3.10.2)[m
+[31m-      ast (~> 2.4.1)[m
+[31m-      racc[m
+[31m-    pg (1.6.3-x86_64-linux)[m
+[31m-    pp (0.6.3)[m
+[31m-      prettyprint[m
+[31m-    prettyprint (0.2.0)[m
+[31m-    prism (1.9.0)[m
+[31m-    psych (5.3.1)[m
+[31m-      date[m
+[31m-      stringio[m
+[31m-    public_suffix (7.0.2)[m
+[31m-    puma (7.2.0)[m
+[31m-      nio4r (~> 2.0)[m
+[31m-    racc (1.8.1)[m
+[31m-    rack (3.2.5)[m
+[31m-    rack-session (2.1.1)[m
+[31m-      base64 (>= 0.1.0)[m
+[31m-      rack (>= 3.0.0)[m
+[31m-    rack-test (2.2.0)[m
+[31m-      rack (>= 1.3)[m
+[31m-    rackup (2.3.1)[m
+[31m-      rack (>= 3)[m
+[31m-    rails (7.1.6)[m
+[31m-      actioncable (= 7.1.6)[m
+[31m-      actionmailbox (= 7.1.6)[m
+[31m-      actionmailer (= 7.1.6)[m
+[31m-      actionpack (= 7.1.6)[m
+[31m-      actiontext (= 7.1.6)[m
+[31m-      actionview (= 7.1.6)[m
+[31m-      activejob (= 7.1.6)[m
+[31m-      activemodel (= 7.1.6)[m
+[31m-      activerecord (= 7.1.6)[m
+[31m-      activestorage (= 7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-      bundler (>= 1.15.0)[m
+[31m-      railties (= 7.1.6)[m
+[31m-    rails-dom-testing (2.3.0)[m
+[31m-      activesupport (>= 5.0.0)[m
+[31m-      minitest[m
+[31m-      nokogiri (>= 1.6)[m
+[31m-    rails-html-sanitizer (1.7.0)[m
+[31m-      loofah (~> 2.25)[m
+[31m-      nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)[m
+[31m-    railties (7.1.6)[m
+[31m-      actionpack (= 7.1.6)[m
+[31m-      activesupport (= 7.1.6)[m
+[31m-      cgi[m
+[31m-      irb[m
+[31m-      rackup (>= 1.0.0)[m
+[31m-      rake (>= 12.2)[m
+[31m-      thor (~> 1.0, >= 1.2.2)[m
+[31m-      tsort (>= 0.2)[m
+[31m-      zeitwerk (~> 2.6)[m
+[31m-    rainbow (3.1.1)[m
+[31m-    rake (13.3.1)[m
+[31m-    rdoc (7.2.0)[m
+[31m-      erb[m
+[31m-      psych (>= 4.0.0)[m
+[31m-      tsort[m
+[31m-    regexp_parser (2.11.3)[m
+[31m-    reline (0.6.3)[m
+[31m-      io-console (~> 0.5)[m
+[31m-    responders (3.2.0)[m
+[31m-      actionpack (>= 7.0)[m
+[31m-      railties (>= 7.0)[m
+[31m-    rexml (3.4.4)[m
+[31m-    rspec-core (3.13.6)[m
+[31m-      rspec-support (~> 3.13.0)[m
+[31m-    rspec-expectations (3.13.5)[m
+[31m-      diff-lcs (>= 1.2.0, < 2.0)[m
+[31m-      rspec-support (~> 3.13.0)[m
+[31m-    rspec-mocks (3.13.8)[m
+[31m-      diff-lcs (>= 1.2.0, < 2.0)[m
+[31m-      rspec-support (~> 3.13.0)[m
+[31m-    rspec-rails (4.0.2)[m
+[31m-      actionpack (>= 4.2)[m
+[31m-      activesupport (>= 4.2)[m
+[31m-      railties (>= 4.2)[m
+[31m-      rspec-core (~> 3.10)[m
+[31m-      rspec-expectations (~> 3.10)[m
+[31m-      rspec-mocks (~> 3.10)[m
+[31m-      rspec-support (~> 3.10)[m
+[31m-    rspec-support (3.13.7)[m
+[31m-    rubocop (1.85.0)[m
+[31m-      json (~> 2.3)[m
+[31m-      language_server-protocol (~> 3.17.0.2)[m
+[31m-      lint_roller (~> 1.1.0)[m
+[31m-      mcp (~> 0.6)[m
+[31m-      parallel (~> 1.10)[m
+[31m-      parser (>= 3.3.0.2)[m
+[31m-      rainbow (>= 2.2.2, < 4.0)[m
+[31m-      regexp_parser (>= 2.9.3, < 3.0)[m
+[31m-      rubocop-ast (>= 1.49.0, < 2.0)[m
+[31m-      ruby-progressbar (~> 1.7)[m
+[31m-      unicode-display_width (>= 2.4.0, < 4.0)[m
+[31m-    rubocop-ast (1.49.0)[m
+[31m-      parser (>= 3.3.7.2)[m
+[31m-      prism (~> 1.7)[m
+[31m-    ruby-progressbar (1.13.0)[m
+[31m-    ruby-vips (2.3.0)[m
+[31m-      ffi (~> 1.12)[m
+[31m-      logger[m
+[31m-    rubyzip (3.2.2)[m
+[31m-    securerandom (0.4.1)[m
+[31m-    selenium-webdriver (4.41.0)[m
+[31m-      base64 (~> 0.2)[m
+[31m-      logger (~> 1.4)[m
+[31m-      rexml (~> 3.2, >= 3.2.5)[m
+[31m-      rubyzip (>= 1.2.2, < 4.0)[m
+[31m-      websocket (~> 1.0)[m
+[31m-    sprockets (4.2.2)[m
+[31m-      concurrent-ruby (~> 1.0)[m
+[31m-      logger[m
+[31m-      rack (>= 2.2.4, < 4)[m
+[31m-    sprockets-rails (3.5.2)[m
+[31m-      actionpack (>= 6.1)[m
+[31m-      activesupport (>= 6.1)[m
+[31m-      sprockets (>= 3.0.0)[m
+[31m-    stimulus-rails (1.3.4)[m
+[31m-      railties (>= 6.0.0)[m
+[31m-    stringio (3.2.0)[m
+[31m-    thor (1.5.0)[m
+[31m-    timeout (0.6.0)[m
+[31m-    tsort (0.2.0)[m
+[31m-    turbo-rails (2.0.23)[m
+[31m-      actionpack (>= 7.1.0)[m
+[31m-      railties (>= 7.1.0)[m
+[31m-    tzinfo (2.0.6)[m
+[31m-      concurrent-ruby (~> 1.0)[m
+[31m-    unicode-display_width (3.2.0)[m
+[31m-      unicode-emoji (~> 4.1)[m
+[31m-    unicode-emoji (4.2.0)[m
+[31m-    warden (1.2.9)[m
+[31m-      rack (>= 2.0.9)[m
+[31m-    web-console (4.2.1)[m
+[31m-      actionview (>= 6.0.0)[m
+[31m-      activemodel (>= 6.0.0)[m
+[31m-      bindex (>= 0.4.0)[m
+[31m-      railties (>= 6.0.0)[m
+[31m-    websocket (1.2.11)[m
+[31m-    websocket-driver (0.8.0)[m
+[31m-      base64[m
+[31m-      websocket-extensions (>= 0.1.0)[m
+[31m-    websocket-extensions (0.1.5)[m
+[31m-    xpath (3.2.0)[m
+[31m-      nokogiri (~> 1.8)[m
+[31m-    zeitwerk (2.7.5)[m
+[31m-[m
+[31m-PLATFORMS[m
+[31m-  x86_64-linux[m
+[31m-[m
+[31m-DEPENDENCIES[m
+[31m-  active_hash[m
+[31m-  bootsnap[m
+[31m-  capybara[m
+[31m-  debug[m
+[31m-  devise[m
+[31m-  factory_bot_rails[m
+[31m-  faker[m
+[31m-  image_processing (~> 1.2)[m
+[31m-  importmap-rails[m
+[31m-  jbuilder[m
+[31m-  mini_magick[m
+[31m-  mysql2 (~> 0.5)[m
+[31m-  pg[m
+[31m-  puma (>= 5.0)[m
+[31m-  rails (~> 7.1.0)[m
+[31m-  rspec-rails (~> 4.0.0)[m
+[31m-  rubocop[m
+[31m-  selenium-webdriver[m
+[31m-  sprockets-rails[m
+[31m-  stimulus-rails[m
+[31m-  turbo-rails[m
+[31m-  tzinfo-data[m
+[31m-  web-console[m
+[31m-[m
+[31m-RUBY VERSION[m
+[31m-   ruby 3.2.0p0[m
+[31m-[m
+[31m-BUNDLED WITH[m
+[31m-   2.4.1[m
+[32m+[m[32mGEM[m[41m[m
+[32m+[m[32m  remote: https://rubygems.org/[m[41m[m
+[32m+[m[32m  specs:[m[41m[m
+[32m+[m[32m    actioncable (7.1.6)[m[41m[m
+[32m+[m[32m      actionpack (= 7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m      nio4r (~> 2.0)[m[41m[m
+[32m+[m[32m      websocket-driver (>= 0.6.1)[m[41m[m
+[32m+[m[32m      zeitwerk (~> 2.6)[m[41m[m
+[32m+[m[32m    actionmailbox (7.1.6)[m[41m[m
+[32m+[m[32m      actionpack (= 7.1.6)[m[41m[m
+[32m+[m[32m      activejob (= 7.1.6)[m[41m[m
+[32m+[m[32m      activerecord (= 7.1.6)[m[41m[m
+[32m+[m[32m      activestorage (= 7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m      mail (>= 2.7.1)[m[41m[m
+[32m+[m[32m      net-imap[m[41m[m
+[32m+[m[32m      net-pop[m[41m[m
+[32m+[m[32m      net-smtp[m[41m[m
+[32m+[m[32m    actionmailer (7.1.6)[m[41m[m
+[32m+[m[32m      actionpack (= 7.1.6)[m[41m[m
+[32m+[m[32m      actionview (= 7.1.6)[m[41m[m
+[32m+[m[32m      activejob (= 7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m      mail (~> 2.5, >= 2.5.4)[m[41m[m
+[32m+[m[32m      net-imap[m[41m[m
+[32m+[m[32m      net-pop[m[41m[m
+[32m+[m[32m      net-smtp[m[41m[m
+[32m+[m[32m      rails-dom-testing (~> 2.2)[m[41m[m
+[32m+[m[32m    actionpack (7.1.6)[m[41m[m
+[32m+[m[32m      actionview (= 7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m      cgi[m[41m[m
+[32m+[m[32m      nokogiri (>= 1.8.5)[m[41m[m
+[32m+[m[32m      racc[m[41m[m
+[32m+[m[32m      rack (>= 2.2.4)[m[41m[m
+[32m+[m[32m      rack-session (>= 1.0.1)[m[41m[m
+[32m+[m[32m      rack-test (>= 0.6.3)[m[41m[m
+[32m+[m[32m      rails-dom-testing (~> 2.2)[m[41m[m
+[32m+[m[32m      rails-html-sanitizer (~> 1.6)[m[41m[m
+[32m+[m[32m    actiontext (7.1.6)[m[41m[m
+[32m+[m[32m      actionpack (= 7.1.6)[m[41m[m
+[32m+[m[32m      activerecord (= 7.1.6)[m[41m[m
+[32m+[m[32m      activestorage (= 7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m      globalid (>= 0.6.0)[m[41m[m
+[32m+[m[32m      nokogiri (>= 1.8.5)[m[41m[m
+[32m+[m[32m    actionview (7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m      builder (~> 3.1)[m[41m[m
+[32m+[m[32m      cgi[m[41m[m
+[32m+[m[32m      erubi (~> 1.11)[m[41m[m
+[32m+[m[32m      rails-dom-testing (~> 2.2)[m[41m[m
+[32m+[m[32m      rails-html-sanitizer (~> 1.6)[m[41m[m
+[32m+[m[32m    active_hash (4.1.0)[m[41m[m
+[32m+[m[32m      activesupport (>= 6.1.0)[m[41m[m
+[32m+[m[32m    activejob (7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m      globalid (>= 0.3.6)[m[41m[m
+[32m+[m[32m    activemodel (7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m    activerecord (7.1.6)[m[41m[m
+[32m+[m[32m      activemodel (= 7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m      timeout (>= 0.4.0)[m[41m[m
+[32m+[m[32m    activestorage (7.1.6)[m[41m[m
+[32m+[m[32m      actionpack (= 7.1.6)[m[41m[m
+[32m+[m[32m      activejob (= 7.1.6)[m[41m[m
+[32m+[m[32m      activerecord (= 7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m      marcel (~> 1.0)[m[41m[m
+[32m+[m[32m    activesupport (7.1.6)[m[41m[m
+[32m+[m[32m      base64[m[41m[m
+[32m+[m[32m      benchmark (>= 0.3)[m[41m[m
+[32m+[m[32m      bigdecimal[m[41m[m
+[32m+[m[32m      concurrent-ruby (~> 1.0, >= 1.0.2)[m[41m[m
+[32m+[m[32m      connection_pool (>= 2.2.5)[m[41m[m
+[32m+[m[32m      drb[m[41m[m
+[32m+[m[32m      i18n (>= 1.6, < 2)[m[41m[m
+[32m+[m[32m      logger (>= 1.4.2)[m[41m[m
+[32m+[m[32m      minitest (>= 5.1)[m[41m[m
+[32m+[m[32m      mutex_m[m[41m[m
+[32m+[m[32m      securerandom (>= 0.3)[m[41m[m
+[32m+[m[32m      tzinfo (~> 2.0)[m[41m[m
+[32m+[m[32m    addressable (2.8.8)[m[41m[m
+[32m+[m[32m      public_suffix (>= 2.0.2, < 8.0)[m[41m[m
+[32m+[m[32m    ast (2.4.3)[m[41m[m
+[32m+[m[32m    base64 (0.3.0)[m[41m[m
+[32m+[m[32m    bcrypt (3.1.22)[m[41m[m
+[32m+[m[32m    benchmark (0.5.0)[m[41m[m
+[32m+[m[32m    bigdecimal (4.0.1)[m[41m[m
+[32m+[m[32m    bindex (0.8.1)[m[41m[m
+[32m+[m[32m    bootsnap (1.23.0)[m[41m[m
+[32m+[m[32m      msgpack (~> 1.2)[m[41m[m
+[32m+[m[32m    builder (3.3.0)[m[41m[m
+[32m+[m[32m    capybara (3.40.0)[m[41m[m
+[32m+[m[32m      addressable[m[41m[m
+[32m+[m[32m      matrix[m[41m[m
+[32m+[m[32m      mini_mime (>= 0.1.3)[m[41m[m
+[32m+[m[32m      nokogiri (~> 1.11)[m[41m[m
+[32m+[m[32m      rack (>= 1.6.0)[m[41m[m
+[32m+[m[32m      rack-test (>= 0.6.3)[m[41m[m
+[32m+[m[32m      regexp_parser (>= 1.5, < 3.0)[m[41m[m
+[32m+[m[32m      xpath (~> 3.2)[m[41m[m
+[32m+[m[32m    cgi (0.5.1)[m[41m[m
+[32m+[m[32m    concurrent-ruby (1.3.6)[m[41m[m
+[32m+[m[32m    connection_pool (3.0.2)[m[41m[m
+[32m+[m[32m    crass (1.0.6)[m[41m[m
+[32m+[m[32m    date (3.5.1)[m[41m[m
+[32m+[m[32m    debug (1.11.1)[m[41m[m
+[32m+[m[32m      irb (~> 1.10)[m[41m[m
+[32m+[m[32m      reline (>= 0.3.8)[m[41m[m
+[32m+[m[32m    devise (5.0.3)[m[41m[m
+[32m+[m[32m      bcrypt (~> 3.0)[m[41m[m
+[32m+[m[32m      orm_adapter (~> 0.1)[m[41m[m
+[32m+[m[32m      railties (>= 7.0)[m[41m[m
+[32m+[m[32m      responders[m[41m[m
+[32m+[m[32m      warden (~> 1.2.3)[m[41m[m
+[32m+[m[32m    diff-lcs (1.6.2)[m[41m[m
+[32m+[m[32m    drb (2.2.3)[m[41m[m
+[32m+[m[32m    erb (6.0.2)[m[41m[m
+[32m+[m[32m    erubi (1.13.1)[m[41m[m
+[32m+[m[32m    factory_bot (6.6.0)[m[41m[m
+[32m+[m[32m      activesupport (>= 6.1.0)[m[41m[m
+[32m+[m[32m    factory_bot_rails (6.5.1)[m[41m[m
+[32m+[m[32m      factory_bot (~> 6.5)[m[41m[m
+[32m+[m[32m      railties (>= 6.1.0)[m[41m[m
+[32m+[m[32m    faker (3.8.0)[m[41m[m
+[32m+[m[32m      i18n (>= 1.8.11, < 2)[m[41m[m
+[32m+[m[32m    ffi (1.17.4-x86_64-linux-gnu)[m[41m[m
+[32m+[m[32m    globalid (1.3.0)[m[41m[m
+[32m+[m[32m      activesupport (>= 6.1)[m[41m[m
+[32m+[m[32m    i18n (1.14.8)[m[41m[m
+[32m+[m[32m      concurrent-ruby (~> 1.0)[m[41m[m
+[32m+[m[32m    image_processing (1.14.0)[m[41m[m
+[32m+[m[32m      mini_magick (>= 4.9.5, < 6)[m[41m[m
+[32m+[m[32m      ruby-vips (>= 2.0.17, < 3)[m[41m[m
+[32m+[m[32m    importmap-rails (2.2.3)[m[41m[m
+[32m+[m[32m      actionpack (>= 6.0.0)[m[41m[m
+[32m+[m[32m      activesupport (>= 6.0.0)[m[41m[m
+[32m+[m[32m      railties (>= 6.0.0)[m[41m[m
+[32m+[m[32m    io-console (0.8.2)[m[41m[m
+[32m+[m[32m    irb (1.17.0)[m[41m[m
+[32m+[m[32m      pp (>= 0.6.0)[m[41m[m
+[32m+[m[32m      prism (>= 1.3.0)[m[41m[m
+[32m+[m[32m      rdoc (>= 4.0.0)[m[41m[m
+[32m+[m[32m      reline (>= 0.4.2)[m[41m[m
+[32m+[m[32m    jbuilder (2.14.1)[m[41m[m
+[32m+[m[32m      actionview (>= 7.0.0)[m[41m[m
+[32m+[m[32m      activesupport (>= 7.0.0)[m[41m[m
+[32m+[m[32m    json (2.18.1)[m[41m[m
+[32m+[m[32m    json-schema (6.1.0)[m[41m[m
+[32m+[m[32m      addressable (~> 2.8)[m[41m[m
+[32m+[m[32m      bigdecimal (>= 3.1, < 5)[m[41m[m
+[32m+[m[32m    language_server-protocol (3.17.0.5)[m[41m[m
+[32m+[m[32m    lint_roller (1.1.0)[m[41m[m
+[32m+[m[32m    logger (1.7.0)[m[41m[m
+[32m+[m[32m    loofah (2.25.0)[m[41m[m
+[32m+[m[32m      crass (~> 1.0.2)[m[41m[m
+[32m+[m[32m      nokogiri (>= 1.12.0)[m[41m[m
+[32m+[m[32m    mail (2.9.0)[m[41m[m
+[32m+[m[32m      logger[m[41m[m
+[32m+[m[32m      mini_mime (>= 0.1.1)[m[41m[m
+[32m+[m[32m      net-imap[m[41m[m
+[32m+[m[32m      net-pop[m[41m[m
+[32m+[m[32m      net-smtp[m[41m[m
+[32m+[m[32m    marcel (1.1.0)[m[41m[m
+[32m+[m[32m    matrix (0.4.3)[m[41m[m
+[32m+[m[32m    mcp (0.7.1)[m[41m[m
+[32m+[m[32m      json-schema (>= 4.1)[m[41m[m
+[32m+[m[32m    mini_magick (5.3.1)[m[41m[m
+[32m+[m[32m      logger[m[41m[m
+[32m+[m[32m    mini_mime (1.1.5)[m[41m[m
+[32m+[m[32m    minitest (6.0.2)[m[41m[m
+[32m+[m[32m      drb (~> 2.0)[m[41m[m
+[32m+[m[32m      prism (~> 1.5)[m[41m[m
+[32m+[m[32m    msgpack (1.8.0)[m[41m[m
+[32m+[m[32m    mutex_m (0.3.0)[m[41m[m
+[32m+[m[32m    mysql2 (0.5.7)[m[41m[m
+[32m+[m[32m      bigdecimal[m[41m[m
+[32m+[m[32m    net-imap (0.6.3)[m[41m[m
+[32m+[m[32m      date[m[41m[m
+[32m+[m[32m      net-protocol[m[41m[m
+[32m+[m[32m    net-pop (0.1.2)[m[41m[m
+[32m+[m[32m      net-protocol[m[41m[m
+[32m+[m[32m    net-protocol (0.2.2)[m[41m[m
+[32m+[m[32m      timeout[m[41m[m
+[32m+[m[32m    net-smtp (0.5.1)[m[41m[m
+[32m+[m[32m      net-protocol[m[41m[m
+[32m+[m[32m    nio4r (2.7.5)[m[41m[m
+[32m+[m[32m    nokogiri (1.19.1-x86_64-linux-gnu)[m[41m[m
+[32m+[m[32m      racc (~> 1.4)[m[41m[m
+[32m+[m[32m    orm_adapter (0.5.0)[m[41m[m
+[32m+[m[32m    parallel (1.27.0)[m[41m[m
+[32m+[m[32m    parser (3.3.10.2)[m[41m[m
+[32m+[m[32m      ast (~> 2.4.1)[m[41m[m
+[32m+[m[32m      racc[m[41m[m
+[32m+[m[32m    pg (1.6.3-x86_64-linux)[m[41m[m
+[32m+[m[32m    pp (0.6.3)[m[41m[m
+[32m+[m[32m      prettyprint[m[41m[m
+[32m+[m[32m    prettyprint (0.2.0)[m[41m[m
+[32m+[m[32m    prism (1.9.0)[m[41m[m
+[32m+[m[32m    psych (5.3.1)[m[41m[m
+[32m+[m[32m      date[m[41m[m
+[32m+[m[32m      stringio[m[41m[m
+[32m+[m[32m    public_suffix (7.0.2)[m[41m[m
+[32m+[m[32m    puma (7.2.0)[m[41m[m
+[32m+[m[32m      nio4r (~> 2.0)[m[41m[m
+[32m+[m[32m    racc (1.8.1)[m[41m[m
+[32m+[m[32m    rack (3.2.5)[m[41m[m
+[32m+[m[32m    rack-session (2.1.1)[m[41m[m
+[32m+[m[32m      base64 (>= 0.1.0)[m[41m[m
+[32m+[m[32m      rack (>= 3.0.0)[m[41m[m
+[32m+[m[32m    rack-test (2.2.0)[m[41m[m
+[32m+[m[32m      rack (>= 1.3)[m[41m[m
+[32m+[m[32m    rackup (2.3.1)[m[41m[m
+[32m+[m[32m      rack (>= 3)[m[41m[m
+[32m+[m[32m    rails (7.1.6)[m[41m[m
+[32m+[m[32m      actioncable (= 7.1.6)[m[41m[m
+[32m+[m[32m      actionmailbox (= 7.1.6)[m[41m[m
+[32m+[m[32m      actionmailer (= 7.1.6)[m[41m[m
+[32m+[m[32m      actionpack (= 7.1.6)[m[41m[m
+[32m+[m[32m      actiontext (= 7.1.6)[m[41m[m
+[32m+[m[32m      actionview (= 7.1.6)[m[41m[m
+[32m+[m[32m      activejob (= 7.1.6)[m[41m[m
+[32m+[m[32m      activemodel (= 7.1.6)[m[41m[m
+[32m+[m[32m      activerecord (= 7.1.6)[m[41m[m
+[32m+[m[32m      activestorage (= 7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m      bundler (>= 1.15.0)[m[41m[m
+[32m+[m[32m      railties (= 7.1.6)[m[41m[m
+[32m+[m[32m    rails-dom-testing (2.3.0)[m[41m[m
+[32m+[m[32m      activesupport (>= 5.0.0)[m[41m[m
+[32m+[m[32m      minitest[m[41m[m
+[32m+[m[32m      nokogiri (>= 1.6)[m[41m[m
+[32m+[m[32m    rails-html-sanitizer (1.7.0)[m[41m[m
+[32m+[m[32m      loofah (~> 2.25)[m[41m[m
+[32m+[m[32m      nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)[m[41m[m
+[32m+[m[32m    railties (7.1.6)[m[41m[m
+[32m+[m[32m      actionpack (= 7.1.6)[m[41m[m
+[32m+[m[32m      activesupport (= 7.1.6)[m[41m[m
+[32m+[m[32m      cgi[m[41m[m
+[32m+[m[32m      irb[m[41m[m
+[32m+[m[32m      rackup (>= 1.0.0)[m[41m[m
+[32m+[m[32m      rake (>= 12.2)[m[41m[m
+[32m+[m[32m      thor (~> 1.0, >= 1.2.2)[m[41m[m
+[32m+[m[32m      tsort (>= 0.2)[m[41m[m
+[32m+[m[32m      zeitwerk (~> 2.6)[m[41m[m
+[32m+[m[32m    rainbow (3.1.1)[m[41m[m
+[32m+[m[32m    rake (13.3.1)[m[41m[m
+[32m+[m[32m    rdoc (7.2.0)[m[41m[m
+[32m+[m[32m      erb[m[41m[m
+[32m+[m[32m      psych (>= 4.0.0)[m[41m[m
+[32m+[m[32m      tsort[m[41m[m
+[32m+[m[32m    regexp_parser (2.11.3)[m[41m[m
+[32m+[m[32m    reline (0.6.3)[m[41m[m
+[32m+[m[32m      io-console (~> 0.5)[m[41m[m
+[32m+[m[32m    responders (3.2.0)[m[41m[m
+[32m+[m[32m      actionpack (>= 7.0)[m[41m[m
+[32m+[m[32m      railties (>= 7.0)[m[41m[m
+[32m+[m[32m    rexml (3.4.4)[m[41m[m
+[32m+[m[32m    rspec-core (3.13.6)[m[41m[m
+[32m+[m[32m      rspec-support (~> 3.13.0)[m[41m[m
+[32m+[m[32m    rspec-expectations (3.13.5)[m[41m[m
+[32m+[m[32m      diff-lcs (>= 1.2.0, < 2.0)[m[41m[m
+[32m+[m[32m      rspec-support (~> 3.13.0)[m[41m[m
+[32m+[m[32m    rspec-mocks (3.13.8)[m[41m[m
+[32m+[m[32m      diff-lcs (>= 1.2.0, < 2.0)[m[41m[m
+[32m+[m[32m      rspec-support (~> 3.13.0)[m[41m[m
+[32m+[m[32m    rspec-rails (4.0.2)[m[41m[m
+[32m+[m[32m      actionpack (>= 4.2)[m[41m[m
+[32m+[m[32m      activesupport (>= 4.2)[m[41m[m
+[32m+[m[32m      railties (>= 4.2)[m[41m[m
+[32m+[m[32m      rspec-core (~> 3.10)[m[41m[m
+[32m+[m[32m      rspec-expectations (~> 3.10)[m[41m[m
+[32m+[m[32m      rspec-mocks (~> 3.10)[m[41m[m
+[32m+[m[32m      rspec-support (~> 3.10)[m[41m[m
+[32m+[m[32m    rspec-support (3.13.7)[m[41m[m
+[32m+[m[32m    rubocop (1.85.0)[m[41m[m
+[32m+[m[32m      json (~> 2.3)[m[41m[m
+[32m+[m[32m      language_server-protocol (~> 3.17.0.2)[m[41m[m
+[32m+[m[32m      lint_roller (~> 1.1.0)[m[41m[m
+[32m+[m[32m      mcp (~> 0.6)[m[41m[m
+[32m+[m[32m      parallel (~> 1.10)[m[41m[m
+[32m+[m[32m      parser (>= 3.3.0.2)[m[41m[m
+[32m+[m[32m      rainbow (>= 2.2.2, < 4.0)[m[41m[m
+[32m+[m[32m      regexp_parser (>= 2.9.3, < 3.0)[m[41m[m
+[32m+[m[32m      rubocop-ast (>= 1.49.0, < 2.0)[m[41m[m
+[32m+[m[32m      ruby-progressbar (~> 1.7)[m[41m[m
+[32m+[m[32m      unicode-display_width (>= 2.4.0, < 4.0)[m[41m[m
+[32m+[m[32m    rubocop-ast (1.49.0)[m[41m[m
+[32m+[m[32m      parser (>= 3.3.7.2)[m[41m[m
+[32m+[m[32m      prism (~> 1.7)[m[41m[m
+[32m+[m[32m    ruby-progressbar (1.13.0)[m[41m[m
+[32m+[m[32m    ruby-vips (2.3.0)[m[41m[m
+[32m+[m[32m      ffi (~> 1.12)[m[41m[m
+[32m+[m[32m      logger[m[41m[m
+[32m+[m[32m    rubyzip (3.2.2)[m[41m[m
+[32m+[m[32m    securerandom (0.4.1)[m[41m[m
+[32m+[m[32m    selenium-webdriver (4.41.0)[m[41m[m
+[32m+[m[32m      base64 (~> 0.2)[m[41m[m
+[32m+[m[32m      logger (~> 1.4)[m[41m[m
+[32m+[m[32m      rexml (~> 3.2, >= 3.2.5)[m[41m[m
+[32m+[m[32m      rubyzip (>= 1.2.2, < 4.0)[m[41m[m
+[32m+[m[32m      websocket (~> 1.0)[m[41m[m
+[32m+[m[32m    sprockets (4.2.2)[m[41m[m
+[32m+[m[32m      concurrent-ruby (~> 1.0)[m[41m[m
+[32m+[m[32m      logger[m[41m[m
+[32m+[m[32m      rack (>= 2.2.4, < 4)[m[41m[m
+[32m+[m[32m    sprockets-rails (3.5.2)[m[41m[m
+[32m+[m[32m      actionpack (>= 6.1)[m[41m[m
+[32m+[m[32m      activesupport (>= 6.1)[m[41m[m
+[32m+[m[32m      sprockets (>= 3.0.0)[m[41m[m
+[32m+[m[32m    stimulus-rails (1.3.4)[m[41m[m
+[32m+[m[32m      railties (>= 6.0.0)[m[41m[m
+[32m+[m[32m    stringio (3.2.0)[m[41m[m
+[32m+[m[32m    thor (1.5.0)[m[41m[m
+[32m+[m[32m    timeout (0.6.0)[m[41m[m
+[32m+[m[32m    tsort (0.2.0)[m[41m[m
+[32m+[m[32m    turbo-rails (2.0.23)[m[41m[m
+[32m+[m[32m      actionpack (>= 7.1.0)[m[41m[m
+[32m+[m[32m      railties (>= 7.1.0)[m[41m[m
+[32m+[m[32m    tzinfo (2.0.6)[m[41m[m
+[32m+[m[32m      concurrent-ruby (~> 1.0)[m[41m[m
+[32m+[m[32m    unicode-display_width (3.2.0)[m[41m[m
+[32m+[m[32m      unicode-emoji (~> 4.1)[m[41m[m
+[32m+[m[32m    unicode-emoji (4.2.0)[m[41m[m
+[32m+[m[32m    warden (1.2.9)[m[41m[m
+[32m+[m[32m      rack (>= 2.0.9)[m[41m[m
+[32m+[m[32m    web-console (4.2.1)[m[41m[m
+[32m+[m[32m      actionview (>= 6.0.0)[m[41m[m
+[32m+[m[32m      activemodel (>= 6.0.0)[m[41m[m
+[32m+[m[32m      bindex (>= 0.4.0)[m[41m[m
+[32m+[m[32m      railties (>= 6.0.0)[m[41m[m
+[32m+[m[32m    websocket (1.2.11)[m[41m[m
+[32m+[m[32m    websocket-driver (0.8.0)[m[41m[m
+[32m+[m[32m      base64[m[41m[m
+[32m+[m[32m      websocket-extensions (>= 0.1.0)[m[41m[m
+[32m+[m[32m    websocket-extensions (0.1.5)[m[41m[m
+[32m+[m[32m    xpath (3.2.0)[m[41m[m
+[32m+[m[32m      nokogiri (~> 1.8)[m[41m[m
+[32m+[m[32m    zeitwerk (2.7.5)[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mPLATFORMS[m[41m[m
+[32m+[m[32m  x86_64-linux[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mDEPENDENCIES[m[41m[m
+[32m+[m[32m  active_hash[m[41m[m
+[32m+[m[32m  bootsnap[m[41m[m
+[32m+[m[32m  capybara[m[41m[m
+[32m+[m[32m  debug[m[41m[m
+[32m+[m[32m  devise[m[41m[m
+[32m+[m[32m  factory_bot_rails[m[41m[m
+[32m+[m[32m  faker[m[41m[m
+[32m+[m[32m  image_processing (~> 1.2)[m[41m[m
+[32m+[m[32m  importmap-rails[m[41m[m
+[32m+[m[32m  jbuilder[m[41m[m
+[32m+[m[32m  mini_magick[m[41m[m
+[32m+[m[32m  mysql2 (~> 0.5)[m[41m[m
+[32m+[m[32m  pg[m[41m[m
+[32m+[m[32m  puma (>= 5.0)[m[41m[m
+[32m+[m[32m  rails (~> 7.1.0)[m[41m[m
+[32m+[m[32m  rspec-rails (~> 4.0.0)[m[41m[m
+[32m+[m[32m  rubocop[m[41m[m
+[32m+[m[32m  selenium-webdriver[m[41m[m
+[32m+[m[32m  sprockets-rails[m[41m[m
+[32m+[m[32m  stimulus-rails[m[41m[m
+[32m+[m[32m  turbo-rails[m[41m[m
+[32m+[m[32m  tzinfo-data[m[41m[m
+[32m+[m[32m  web-console[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mRUBY VERSION[m[41m[m
+[32m+[m[32m   ruby 3.2.0p0[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mBUNDLED WITH[m[41m[m
+[32m+[m[32m   2.4.1[m[41m[m
+[1mdiff --git a/app/controllers/items_controller.rb b/app/controllers/items_controller.rb[m
+[1mindex 028be12..3242ab4 100644[m
+[1m--- a/app/controllers/items_controller.rb[m
+[1m+++ b/app/controllers/items_controller.rb[m
+[36m@@ -28,7 +28,7 @@[m [mclass ItemsController < ApplicationController[m
+ [m
+   def update[m
+     if @item.update(item_params)[m
+[31m-    redirect_to item_path(@item)[m
+[32m+[m[32m      redirect_to item_path(@item)[m
+     else[m
+       render :edit, status: :unprocessable_entity[m
+     end[m
+[36m@@ -41,9 +41,9 @@[m [mclass ItemsController < ApplicationController[m
+   end[m
+ [m
+   def check_owner[m
+[31m-    if current_user != @item.user[m
+[31m-      redirect_to root_path[m
+[31m-    end[m
+[32m+[m[32m    return unless current_user != @item.user[m
+[32m+[m
+[32m+[m[32m    redirect_to root_path[m
+   end[m
+ [m
+   def item_params[m
+[1mdiff --git a/app/javascript/application.js b/app/javascript/application.js[m
+[1mindex 84fabdf..8806bd4 100644[m
+[1m--- a/app/javascript/application.js[m
+[1m+++ b/app/javascript/application.js[m
+[36m@@ -1,4 +1,4 @@[m
+[31m-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails[m
+[31m-import "@hotwired/turbo-rails"[m
+[31m-import "controllers"[m
+[32m+[m[32m// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails[m[41m[m
+[32m+[m[32mimport "@hotwired/turbo-rails"[m[41m[m
+[32m+[m[32mimport "controllers"[m[41m[m
+ import "item_price"[m
+\ No newline at end of file[m
+[1mdiff --git a/app/javascript/item_price.js b/app/javascript/item_price.js[m
+[1mindex 93a9f0a..5b8d19b 100644[m
+[1m--- a/app/javascript/item_price.js[m
+[1m+++ b/app/javascript/item_price.js[m
+[36m@@ -1,17 +1,17 @@[m
+[31m-const price = () => {[m
+[31m-  const priceInput = document.getElementById("item-price");[m
+[31m-[m
+[31m-  priceInput.addEventListener("input", () =>{[m
+[31m-    const inputValue = priceInput.value;[m
+[31m-    [m
+[31m-    const addTaxDom = document.getElementById("add-tax-price");[m
+[31m-    addTaxDom.innerHTML = Math.floor(inputValue * 0.1);[m
+[31m-[m
+[31m-    const profitDom = document.getElementById("profit");[m
+[31m-    profitDom.innerHTML = inputValue - Math.floor(inputValue * 0.1);[m
+[31m-  });[m
+[31m-};[m
+[31m-[m
+[31m-[m
+[31m-window.addEventListener("turbo:load", price);[m
+[31m-window.addEventListener("turbo:render", price);[m
+[32m+[m[32mconst price = () => {[m[41m[m
+[32m+[m[32m  const priceInput = document.getElementById("item-price");[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  priceInput.addEventListener("input", () =>{[m[41m[m
+[32m+[m[32m    const inputValue = priceInput.value;[m[41m[m
+[32m+[m[41m    [m
+[32m+[m[32m    const addTaxDom = document.getElementById("add-tax-price");[m[41m[m
+[32m+[m[32m    addTaxDom.innerHTML = Math.floor(inputValue * 0.1);[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    const profitDom = document.getElementById("profit");[m[41m[m
+[32m+[m[32m    profitDom.innerHTML = inputValue - Math.floor(inputValue * 0.1);[m[41m[m
+[32m+[m[32m  });[m[41m[m
+[32m+[m[32m};[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mwindow.addEventListener("turbo:load", price);[m[41m[m
+[32m+[m[32mwindow.addEventListener("turbo:render", price);[m[41m[m
+[1mdiff --git "a/app/views/items/edit.html.erb\357\200\272Zone.Identifier" "b/app/views/items/edit.html.erb\357\200\272Zone.Identifier"[m
+[1mdeleted file mode 100644[m
+[1mindex 2fcf64c..0000000[m
+Binary files "a/app/views/items/edit.html.erb\357\200\272Zone.Identifier" and /dev/null differ
+[1mdiff --git a/app/views/items/index.html.erb b/app/views/items/index.html.erb[m
+[1mindex 54a41bf..2963eb5 100644[m
+[1m--- a/app/views/items/index.html.erb[m
+[1m+++ b/app/views/items/index.html.erb[m
+[36m@@ -1,187 +1,187 @@[m
+[31m-<%= render "devise/shared/header" %>[m
+[31m-<div class='main'>[m
+[31m-[m
+[31m-  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>[m
+[31m-  <div class='title-contents'>[m
+[31m-    <h2 class='service-title'>[m
+[31m-      人生を変えるフリマアプリ[m
+[31m-    </h2>[m
+[31m-    <p class='service-explain'>[m
+[31m-      FURIMAはだれでもかんたんに出品・購入できる[m
+[31m-    </p>[m
+[31m-    <p class='service-explain'>[m
+[31m-      フリマアプリです[m
+[31m-    </p>[m
+[31m-    <div class='store-btn'>[m
+[31m-      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>[m
+[31m-      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>[m
+[31m-    </div>[m
+[31m-  </div>[m
+[31m-  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>[m
+[31m-[m
+[31m-  <%# FURIMAが選ばれる3つの理由部分 %>[m
+[31m-  <div class='select-reason-contents'>[m
+[31m-    <h2 class='title'>[m
+[31m-      FURIMAが選ばれる3つの理由[m
+[31m-    </h2>[m
+[31m-    <ul class='reason-lists'>[m
+[31m-      <li class='list'>[m
+[31m-        <%= image_tag "furima-intro01.png", class:"list-pict" %>[m
+[31m-        <span class='reason-list-number'>1</span>[m
+[31m-        <h3 class='reason-list-text'>[m
+[31m-          <span class='reason-list-blue-text'>3分</span>[m
+[31m-          ですぐに出品[m
+[31m-        </h3>[m
+[31m-        <p class='reason-list-description'>[m
+[31m-          スマホで入力するだけで簡単に出品できる！[m
+[31m-        </p>[m
+[31m-      </li>[m
+[31m-      <li class='list'>[m
+[31m-        <%= image_tag "furima-intro02.png", class:"list-pict" %>[m
+[31m-        <span class='reason-list-number'>2</span>[m
+[31m-        <h3 class='reason-list-text'>[m
+[31m-          <span class='reason-list-blue-text'>シンプル</span>[m
+[31m-          で使いやすい[m
+[31m-        </h3>[m
+[31m-        <p class='reason-list-description'>[m
+[31m-          めんどくさい入力は必要なく、検索も購入もスムーズ！[m
+[31m-        </p>[m
+[31m-      </li>[m
+[31m-      <li class='list'>[m
+[31m-        <%= image_tag "furima-intro03.png", class:"list-pict" %>[m
+[31m-        <span class='reason-list-number'>3</span>[m
+[31m-        <h3 class='reason-list-text'>[m
+[31m-          手数料[m
+[31m-          <span class='reason-list-blue-text'>業界最安</span>[m
+[31m-        </h3>[m
+[31m-        <p class='reason-list-description'>[m
+[31m-          10%でお得に出品&購入！[m
+[31m-        </p>[m
+[31m-      </li>[m
+[31m-    </ul>[m
+[31m-  </div>[m
+[31m-  <%# /FURIMAが選ばれる3つの理由部分 %>[m
+[31m-[m
+[31m-  <%# 画面中央の「会員数日本一位」帯部分 %>[m
+[31m-  <div class='ad-contents'>[m
+[31m-    <h2 class='ad-title'>[m
+[31m-      会員数日本一位[m
+[31m-    </h2>[m
+[31m-    <p class='ad-explain'>[m
+[31m-      FURIMAは、フリマアプリで最も人気。[m
+[31m-    </p>[m
+[31m-    <p class='ad-explain'>[m
+[31m-      出品・購入回数も業界最多です！[m
+[31m-    </p>[m
+[31m-    <p class='ad-explain'>[m
+[31m-      ほしかったあの商品に出会えるかもしれません。[m
+[31m-    </p>[m
+[31m-    <div class='store-btn'>[m
+[31m-      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>[m
+[31m-      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>[m
+[31m-    </div>[m
+[31m-  </div>[m
+[31m-  <%# /画面中央の「会員数日本一位」帯部分 %>[m
+[31m-[m
+[31m-  <%# FURIMAの特徴 %>[m
+[31m-  <div class='feature-contents'>[m
+[31m-    <h2 class='title'>[m
+[31m-      FURIMAの特徴[m
+[31m-    </h2>[m
+[31m-    <ul class='feature-lists'>[m
+[31m-      <li class='list'>[m
+[31m-        <%= image_tag "furima-intro04.png", class:"list-pict" %>[m
+[31m-        <h3 class='feature-list-text'>[m
+[31m-          簡単に売り買いできる[m
+[31m-        </h3>[m
+[31m-        <p class='feature-list-description'>[m
+[31m-          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！[m
+[31m-        </p>[m
+[31m-      </li>[m
+[31m-      <li class='list'>[m
+[31m-        <%= image_tag "furima-intro05.png", class:"list-pict" %>[m
+[31m-        <h3 class='feature-list-text'>[m
+[31m-          売上金は即日振込みに対応[m
+[31m-        </h3>[m
+[31m-        <p class='feature-list-description'>[m
+[31m-          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします。[m
+[31m-        </p>[m
+[31m-      </li>[m
+[31m-      <li class='list'>[m
+[31m-        <%= image_tag "furima-intro06.png", class:"list-pict" %>[m
+[31m-        <h3 class='feature-list-text'>[m
+[31m-          様々な支払いに対応[m
+[31m-        </h3>[m
+[31m-        <p class='feature-list-description'>[m
+[31m-          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。[m
+[31m-        </p>[m
+[31m-      </li>[m
+[31m-    </ul>[m
+[31m-  </div>[m
+[31m-  <%# /FURIMAの特徴 %>[m
+[31m-[m
+[31m-  <%# 商品一覧 %>[m
+[31m-  <div class='item-contents'>[m
+[31m-    <h2 class='title'>ピックアップカテゴリー</h2>[m
+[31m-    <div class="subtitle" >[m
+[31m-      新規投稿商品[m
+[31m-    </div>[m
+[31m-    <ul class='item-lists'>[m
+[31m-[m
+[31m-      <% @items.each do |item| %>[m
+[31m-        <li class='list'>[m
+[31m-          <%= link_to item_path(item) do %>[m
+[31m-          <div class='item-img-content'>[m
+[31m-            <%= image_tag item.image, class: "item-img" %>[m
+[31m-[m
+[31m-            <%# 商品が売れていればsold outを表示しましょう %>[m
+[31m-            <div class='sold-out'>[m
+[31m-              <span>Sold Out!!</span>[m
+[31m-            </div>[m
+[31m-            <%# //商品が売れていればsold outを表示しましょう %>[m
+[31m-[m
+[31m-          </div>[m
+[31m-          <div class='item-info'>[m
+[31m-            <h3 class='item-name'>[m
+[31m-              <%= item.name %>[m
+[31m-            </h3>[m
+[31m-            <div class='item-price'>[m
+[31m-              <span><%= item.price %>円<br><%= item.shipping_cost.name %></span>[m
+[31m-              <div class='star-btn'>[m
+[31m-                <%= image_tag "star.png", class:"star-icon" %>[m
+[31m-                <span class='star-count'>0</span>[m
+[31m-              </div>[m
+[31m-            </div>[m
+[31m-          </div>[m
+[31m-          <% end %>[m
+[31m-        </li>[m
+[31m-      <% end %>[m
+[31m-[m
+[31m-      <% if @items.empty?%>[m
+[31m-      <li class='list'>[m
+[31m-        <%= link_to '#' do %>[m
+[31m-        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>[m
+[31m-        <div class='item-info'>[m
+[31m-          <h3 class='item-name'>[m
+[31m-            商品を出品してね！[m
+[31m-          </h3>[m
+[31m-          <div class='item-price'>[m
+[31m-            <span>99999999円<br>(税込み)</span>[m
+[31m-            <div class='star-btn'>[m
+[31m-              <%= image_tag "star.png", class:"star-icon" %>[m
+[31m-              <span class='star-count'>0</span>[m
+[31m-            </div>[m
+[31m-          </div>[m
+[31m-        </div>[m
+[31m-        <% end %>[m
+[31m-        <% end %>[m
+[31m-      </li>[m
+[31m-    </ul>[m
+[31m-  </div>[m
+[31m-  <%# /商品一覧 %>[m
+[31m-</div>[m
+[31m-<%= link_to(new_item_path, class: 'purchase-btn') do %>[m
+[31m-  <span class='purchase-btn-text'>出品する</span>[m
+[31m-  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>[m
+[31m-<% end %>[m
+[32m+[m[32m<%= render "devise/shared/header" %>[m[41m[m
+[32m+[m[32m<div class='main'>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>[m[41m[m
+[32m+[m[32m  <div class='title-contents'>[m[41m[m
+[32m+[m[32m    <h2 class='service-title'>[m[41m[m
+[32m+[m[32m      人生を変えるフリマアプリ[m[41m[m
+[32m+[m[32m    </h2>[m[41m[m
+[32m+[m[32m    <p class='service-explain'>[m[41m[m
+[32m+[m[32m      FURIMAはだれでもかんたんに出品・購入できる[m[41m[m
+[32m+[m[32m    </p>[m[41m[m
+[32m+[m[32m    <p class='service-explain'>[m[41m[m
+[32m+[m[32m      フリマアプリです[m[41m[m
+[32m+[m[32m    </p>[m[41m[m
+[32m+[m[32m    <div class='store-btn'>[m[41m[m
+[32m+[m[32m      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>[m[41m[m
+[32m+[m[32m      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>[m[41m[m
+[32m+[m[32m    </div>[m[41m[m
+[32m+[m[32m  </div>[m[41m[m
+[32m+[m[32m  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  <%# FURIMAが選ばれる3つの理由部分 %>[m[41m[m
+[32m+[m[32m  <div class='select-reason-contents'>[m[41m[m
+[32m+[m[32m    <h2 class='title'>[m[41m[m
+[32m+[m[32m      FURIMAが選ばれる3つの理由[m[41m[m
+[32m+[m[32m    </h2>[m[41m[m
+[32m+[m[32m    <ul class='reason-lists'>[m[41m[m
+[32m+[m[32m      <li class='list'>[m[41m[m
+[32m+[m[32m        <%= image_tag "furima-intro01.png", class:"list-pict" %>[m[41m[m
+[32m+[m[32m        <span class='reason-list-number'>1</span>[m[41m[m
+[32m+[m[32m        <h3 class='reason-list-text'>[m[41m[m
+[32m+[m[32m          <span class='reason-list-blue-text'>3分</span>[m[41m[m
+[32m+[m[32m          ですぐに出品[m[41m[m
+[32m+[m[32m        </h3>[m[41m[m
+[32m+[m[32m        <p class='reason-list-description'>[m[41m[m
+[32m+[m[32m          スマホで入力するだけで簡単に出品できる！[m[41m[m
+[32m+[m[32m        </p>[m[41m[m
+[32m+[m[32m      </li>[m[41m[m
+[32m+[m[32m      <li class='list'>[m[41m[m
+[32m+[m[32m        <%= image_tag "furima-intro02.png", class:"list-pict" %>[m[41m[m
+[32m+[m[32m        <span class='reason-list-number'>2</span>[m[41m[m
+[32m+[m[32m        <h3 class='reason-list-text'>[m[41m[m
+[32m+[m[32m          <span class='reason-list-blue-text'>シンプル</span>[m[41m[m
+[32m+[m[32m          で使いやすい[m[41m[m
+[32m+[m[32m        </h3>[m[41m[m
+[32m+[m[32m        <p class='reason-list-description'>[m[41m[m
+[32m+[m[32m          めんどくさい入力は必要なく、検索も購入もスムーズ！[m[41m[m
+[32m+[m[32m        </p>[m[41m[m
+[32m+[m[32m      </li>[m[41m[m
+[32m+[m[32m      <li class='list'>[m[41m[m
+[32m+[m[32m        <%= image_tag "furima-intro03.png", class:"list-pict" %>[m[41m[m
+[32m+[m[32m        <span class='reason-list-number'>3</span>[m[41m[m
+[32m+[m[32m        <h3 class='reason-list-text'>[m[41m[m
+[32m+[m[32m          手数料[m[41m[m
+[32m+[m[32m          <span class='reason-list-blue-text'>業界最安</span>[m[41m[m
+[32m+[m[32m        </h3>[m[41m[m
+[32m+[m[32m        <p class='reason-list-description'>[m[41m[m
+[32m+[m[32m          10%でお得に出品&購入！[m[41m[m
+[32m+[m[32m        </p>[m[41m[m
+[32m+[m[32m      </li>[m[41m[m
+[32m+[m[32m    </ul>[m[41m[m
+[32m+[m[32m  </div>[m[41m[m
+[32m+[m[32m  <%# /FURIMAが選ばれる3つの理由部分 %>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  <%# 画面中央の「会員数日本一位」帯部分 %>[m[41m[m
+[32m+[m[32m  <div class='ad-contents'>[m[41m[m
+[32m+[m[32m    <h2 class='ad-title'>[m[41m[m
+[32m+[m[32m      会員数日本一位[m[41m[m
+[32m+[m[32m    </h2>[m[41m[m
+[32m+[m[32m    <p class='ad-explain'>[m[41m[m
+[32m+[m[32m      FURIMAは、フリマアプリで最も人気。[m[41m[m
+[32m+[m[32m    </p>[m[41m[m
+[32m+[m[32m    <p class='ad-explain'>[m[41m[m
+[32m+[m[32m      出品・購入回数も業界最多です！[m[41m[m
+[32m+[m[32m    </p>[m[41m[m
+[32m+[m[32m    <p class='ad-explain'>[m[41m[m
+[32m+[m[32m      ほしかったあの商品に出会えるかもしれません。[m[41m[m
+[32m+[m[32m    </p>[m[41m[m
+[32m+[m[32m    <div class='store-btn'>[m[41m[m
+[32m+[m[32m      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>[m[41m[m
+[32m+[m[32m      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>[m[41m[m
+[32m+[m[32m    </div>[m[41m[m
+[32m+[m[32m  </div>[m[41m[m
+[32m+[m[32m  <%# /画面中央の「会員数日本一位」帯部分 %>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  <%# FURIMAの特徴 %>[m[41m[m
+[32m+[m[32m  <div class='feature-contents'>[m[41m[m
+[32m+[m[32m    <h2 class='title'>[m[41m[m
+[32m+[m[32m      FURIMAの特徴[m[41m[m
+[32m+[m[32m    </h2>[m[41m[m
+[32m+[m[32m    <ul class='feature-lists'>[m[41m[m
+[32m+[m[32m      <li class='list'>[m[41m[m
+[32m+[m[32m        <%= image_tag "furima-intro04.png", class:"list-pict" %>[m[41m[m
+[32m+[m[32m        <h3 class='feature-list-text'>[m[41m[m
+[32m+[m[32m          簡単に売り買いできる[m[41m[m
+[32m+[m[32m        </h3>[m[41m[m
+[32m+[m[32m        <p class='feature-list-description'>[m[41m[m
+[32m+[m[32m          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！[m[41m[m
+[32m+[m[32m        </p>[m[41m[m
+[32m+[m[32m      </li>[m[41m[m
+[32m+[m[32m      <li class='list'>[m[41m[m
+[32m+[m[32m        <%= image_tag "furima-intro05.png", class:"list-pict" %>[m[41m[m
+[32m+[m[32m        <h3 class='feature-list-text'>[m[41m[m
+[32m+[m[32m          売上金は即日振込みに対応[m[41m[m
+[32m+[m[32m        </h3>[m[41m[m
+[32m+[m[32m        <p class='feature-list-description'>[m[41m[m
+[32m+[m[32m          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします。[m[41m[m
+[32m+[m[32m        </p>[m[41m[m
+[32m+[m[32m      </li>[m[41m[m
+[32m+[m[32m      <li class='list'>[m[41m[m
+[32m+[m[32m        <%= image_tag "furima-intro06.png", class:"list-pict" %>[m[41m[m
+[32m+[m[32m        <h3 class='feature-list-text'>[m[41m[m
+[32m+[m[32m          様々な支払いに対応[m[41m[m
+[32m+[m[32m        </h3>[m[41m[m
+[32m+[m[32m        <p class='feature-list-description'>[m[41m[m
+[32m+[m[32m          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。[m[41m[m
+[32m+[m[32m        </p>[m[41m[m
+[32m+[m[32m      </li>[m[41m[m
+[32m+[m[32m    </ul>[m[41m[m
+[32m+[m[32m  </div>[m[41m[m
+[32m+[m[32m  <%# /FURIMAの特徴 %>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  <%# 商品一覧 %>[m[41m[m
+[32m+[m[32m  <div class='item-contents'>[m[41m[m
+[32m+[m[32m    <h2 class='title'>ピックアップカテゴリー</h2>[m[41m[m
+[32m+[m[32m    <div class="subtitle" >[m[41m[m
+[32m+[m[32m      新規投稿商品[m[41m[m
+[32m+[m[32m    </div>[m[41m[m
+[32m+[m[32m    <ul class='item-lists'>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m      <% @items.each do |item| %>[m[41m[m
+[32m+[m[32m        <li class='list'>[m[41m[m
+[32m+[m[32m          <%= link_to item_path(item) do %>[m[41m[m
+[32m+[m[32m          <div class='item-img-content'>[m[41m[m
+[32m+[m[32m            <%= image_tag item.image, class: "item-img" %>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m            <%# 商品が売れていればsold outを表示しましょう %>[m[41m[m
+[32m+[m[32m            <div class='sold-out'>[m[41m[m
+[32m+[m[32m              <span>Sold Out!!</span>[m[41m[m
+[32m+[m[32m            </div>[m[41m[m
+[32m+[m[32m            <%# //商品が売れていればsold outを表示しましょう %>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m          </div>[m[41m[m
+[32m+[m[32m          <div class='item-info'>[m[41m[m
+[32m+[m[32m            <h3 class='item-name'>[m[41m[m
+[32m+[m[32m              <%= item.name %>[m[41m[m
+[32m+[m[32m            </h3>[m[41m[m
+[32m+[m[32m            <div class='item-price'>[m[41m[m
+[32m+[m[32m              <span><%= item.price %>円<br><%= item.shipping_cost.name %></span>[m[41m[m
+[32m+[m[32m              <div class='star-btn'>[m[41m[m
+[32m+[m[32m                <%= image_tag "star.png", class:"star-icon" %>[m[41m[m
+[32m+[m[32m                <span class='star-count'>0</span>[m[41m[m
+[32m+[m[32m              </div>[m[41m[m
+[32m+[m[32m            </div>[m[41m[m
+[32m+[m[32m          </div>[m[41m[m
+[32m+[m[32m          <% end %>[m[41m[m
+[32m+[m[32m        </li>[m[41m[m
+[32m+[m[32m      <% end %>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m      <% if @items.empty?%>[m[41m[m
+[32m+[m[32m      <li class='list'>[m[41m[m
+[32m+[m[32m        <%= link_to '#' do %>[m[41m[m
+[32m+[m[32m        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>[m[41m[m
+[32m+[m[32m        <div class='item-info'>[m[41m[m
+[32m+[m[32m          <h3 class='item-name'>[m[41m[m
+[32m+[m[32m            商品を出品してね！[m[41m[m
+[32m+[m[32m          </h3>[m[41m[m
+[32m+[m[32m          <div class='item-price'>[m[41m[m
+[32m+[m[32m            <span>99999999円<br>(税込み)</span>[m[41m[m
+[32m+[m[32m            <div class='star-btn'>[m[41m[m
+[32m+[m[32m              <%= image_tag "star.png", class:"star-icon" %>[m[41m[m
+[32m+[m[32m              <span class='star-count'>0</span>[m[41m[m
+[32m+[m[32m            </div>[m[41m[m
+[32m+[m[32m          </div>[m[41m[m
+[32m+[m[32m        </div>[m[41m[m
+[32m+[m[32m        <% end %>[m[41m[m
+[32m+[m[32m        <% end %>[m[41m[m
+[32m+[m[32m      </li>[m[41m[m
+[32m+[m[32m    </ul>[m[41m[m
+[32m+[m[32m  </div>[m[41m[m
+[32m+[m[32m  <%# /商品一覧 %>[m[41m[m
+[32m+[m[32m</div>[m[41m[m
+[32m+[m[32m<%= link_to(new_item_path, class: 'purchase-btn') do %>[m[41m[m
+[32m+[m[32m  <span class='purchase-btn-text'>出品する</span>[m[41m[m
+[32m+[m[32m  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>[m[41m[m
+[32m+[m[32m<% end %>[m[41m[m
+ <%= render "devise/shared/footer" %>[m
+\ No newline at end of file[m
+[1mdiff --git a/app/views/items/new.html.erb b/app/views/items/new.html.erb[m
+[1mindex ec93181..f2127cf 100644[m
+[1m--- a/app/views/items/new.html.erb[m
+[1m+++ b/app/views/items/new.html.erb[m
+[36m@@ -1,143 +1,143 @@[m
+[31m-<div class="items-sell-contents">[m
+[31m-  <header class="items-sell-header">[m
+[31m-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>[m
+[31m-[m
+[31m-  </header>[m
+[31m-  <div class="items-sell-main">[m
+[31m-    <h2 class="items-sell-title">商品の情報を入力</h2>[m
+[31m-    <%= form_with model: @item, local: true do |f| %>[m
+[31m-[m
+[31m-    <%= render 'devise/shared/error_messages', model: f.object %>[m
+[31m-[m
+[31m-    <div class="img-upload">[m
+[31m-      <div class="weight-bold-text">[m
+[31m-        商品画像[m
+[31m-        <span class="indispensable">必須</span>[m
+[31m-      </div>[m
+[31m-      <div class="click-upload">[m
+[31m-        <p>[m
+[31m-          クリックしてファイルをアップロード[m
+[31m-        </p>[m
+[31m-        <%= f.file_field :image, id:"item-image" %>[m
+[31m-      </div>[m
+[31m-    </div>[m
+[31m-    <div class="new-items">[m
+[31m-      <div class="weight-bold-text">[m
+[31m-        商品名[m
+[31m-        <span class="indispensable">必須</span>[m
+[31m-      </div>[m
+[31m-      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>[m
+[31m-      <div class="items-explain">[m
+[31m-        <div class="weight-bold-text">[m
+[31m-          商品の説明[m
+[31m-          <span class="indispensable">必須</span>[m
+[31m-        </div>[m
+[31m-        <%= f.text_area :description, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>[m
+[31m-      </div>[m
+[31m-    </div>[m
+[31m-[m
+[31m-    <div class="items-detail">[m
+[31m-      <div class="weight-bold-text">商品の詳細</div>[m
+[31m-      <div class="form">[m
+[31m-        <div class="weight-bold-text">[m
+[31m-          カテゴリー[m
+[31m-          <span class="indispensable">必須</span>[m
+[31m-        </div>[m
+[31m-        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>[m
+[31m-        <div class="weight-bold-text">[m
+[31m-          商品の状態[m
+[31m-          <span class="indispensable">必須</span>[m
+[31m-        </div>[m
+[31m-        <%= f.collection_select(:condition_id, Condition.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>[m
+[31m-      </div>[m
+[31m-    </div>[m
+[31m-[m
+[31m-    <div class="items-detail">[m
+[31m-      <div class="weight-bold-text question-text">[m
+[31m-        <span>配送について</span>[m
+[31m-        <a class="question" href="#">?</a>[m
+[31m-      </div>[m
+[31m-      <div class="form">[m
+[31m-        <div class="weight-bold-text">[m
+[31m-          配送料の負担[m
+[31m-          <span class="indispensable">必須</span>[m
+[31m-        </div>[m
+[31m-        <%= f.collection_select(:shipping_cost_id, ShippingCost.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>[m
+[31m-        <div class="weight-bold-text">[m
+[31m-          発送元の地域[m
+[31m-          <span class="indispensable">必須</span>[m
+[31m-        </div>[m
+[31m-        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>[m
+[31m-        <div class="weight-bold-text">[m
+[31m-          発送までの日数[m
+[31m-          <span class="indispensable">必須</span>[m
+[31m-        </div>[m
+[31m-        <%= f.collection_select(:shipping_time_id, ShippingTime.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>[m
+[31m-      </div>[m
+[31m-    </div>[m
+[31m-[m
+[31m-    <div class="sell-price">[m
+[31m-      <div class="weight-bold-text question-text">[m
+[31m-        <span>販売価格<br>(¥300〜9,999,999)</span>[m
+[31m-        <a class="question" href="#">?</a>[m
+[31m-      </div>[m
+[31m-      <div>[m
+[31m-        <div class="price-content">[m
+[31m-          <div class="price-text">[m
+[31m-            <span>価格</span>[m
+[31m-            <span class="indispensable">必須</span>[m
+[31m-          </div>[m
+[31m-          <span class="sell-yen">¥</span>[m
+[31m-          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>[m
+[31m-        </div>[m
+[31m-        <div class="price-content">[m
+[31m-          <span>販売手数料 (10%)</span>[m
+[31m-          <span>[m
+[31m-            <span id='add-tax-price'></span>円[m
+[31m-          </span>[m
+[31m-        </div>[m
+[31m-        <div class="price-content">[m
+[31m-          <span>販売利益</span>[m
+[31m-          <span>[m
+[31m-            <span id='profit'></span>円[m
+[31m-          </span>[m
+[31m-        </div>[m
+[31m-      </div>[m
+[31m-    </div>[m
+[31m-[m
+[31m-    <div class="caution">[m
+[31m-      <p class="sentence">[m
+[31m-        <a href="#">禁止されている出品、</a>[m
+[31m-        <a href="#">行為</a>[m
+[31m-        を必ずご確認ください。[m
+[31m-      </p>[m
+[31m-      <p class="sentence">[m
+[31m-        またブランド品でシリアルナンバー等がある場合はご記載ください。[m
+[31m-        <a href="#">偽ブランドの販売</a>[m
+[31m-        は犯罪であり処罰される可能性があります。[m
+[31m-      </p>[m
+[31m-      <p class="sentence">[m
+[31m-        また、出品をもちまして[m
+[31m-        <a href="#">加盟店規約</a>[m
+[31m-        に同意したことになります。[m
+[31m-      </p>[m
+[31m-    </div>[m
+[31m-    <div class="sell-btn-contents">[m
+[31m-      <%= f.submit "出品する" ,class:"sell-btn" %>[m
+[31m-      <%=link_to 'もどる', root_path, class:"back-btn" %>[m
+[31m-    </div>[m
+[31m-  </div>[m
+[31m-<% end %>[m
+[31m-[m
+[31m-  <footer class="items-sell-footer">[m
+[31m-    <ul class="menu">[m
+[31m-      <li><a href="#">プライバシーポリシー</a></li>[m
+[31m-      <li><a href="#">フリマ利用規約</a></li>[m
+[31m-      <li><a href="#">特定商取引に関する表記</a></li>[m
+[31m-    </ul>[m
+[31m-    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>[m
+[31m-    <p class="inc">[m
+[31m-      ©︎Furima,Inc.[m
+[31m-    </p>[m
+[31m-  </footer>[m
+[32m+[m[32m<div class="items-sell-contents">[m[41m[m
+[32m+[m[32m  <header class="items-sell-header">[m[41m[m
+[32m+[m[32m    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  </header>[m[41m[m
+[32m+[m[32m  <div class="items-sell-main">[m[41m[m
+[32m+[m[32m    <h2 class="items-sell-title">商品の情報を入力</h2>[m[41m[m
+[32m+[m[32m    <%= form_with model: @item, local: true do |f| %>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    <%= render 'devise/shared/error_messages', model: f.object %>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    <div class="img-upload">[m[41m[m
+[32m+[m[32m      <div class="weight-bold-text">[m[41m[m
+[32m+[m[32m        商品画像[m[41m[m
+[32m+[m[32m        <span class="indispensable">必須</span>[m[41m[m
+[32m+[m[32m      </div>[m[41m[m
+[32m+[m[32m      <div class="click-upload">[m[41m[m
+[32m+[m[32m        <p>[m[41m[m
+[32m+[m[32m          クリックしてファイルをアップロード[m[41m[m
+[32m+[m[32m        </p>[m[41m[m
+[32m+[m[32m        <%= f.file_field :image, id:"item-image" %>[m[41m[m
+[32m+[m[32m      </div>[m[41m[m
+[32m+[m[32m    </div>[m[41m[m
+[32m+[m[32m    <div class="new-items">[m[41m[m
+[32m+[m[32m      <div class="weight-bold-text">[m[41m[m
+[32m+[m[32m        商品名[m[41m[m
+[32m+[m[32m        <span class="indispensable">必須</span>[m[41m[m
+[32m+[m[32m      </div>[m[41m[m
+[32m+[m[32m      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>[m[41m[m
+[32m+[m[32m      <div class="items-explain">[m[41m[m
+[32m+[m[32m        <div class="weight-bold-text">[m[41m[m
+[32m+[m[32m          商品の説明[m[41m[m
+[32m+[m[32m          <span class="indispensable">必須</span>[m[41m[m
+[32m+[m[32m        </div>[m[41m[m
+[32m+[m[32m        <%= f.text_area :description, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>[m[41m[m
+[32m+[m[32m      </div>[m[41m[m
+[32m+[m[32m    </div>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    <div class="items-detail">[m[41m[m
+[32m+[m[32m      <div class="weight-bold-text">商品の詳細</div>[m[41m[m
+[32m+[m[32m      <div class="form">[m[41m[m
+[32m+[m[32m        <div class="weight-bold-text">[m[41m[m
+[32m+[m[32m          カテゴリー[m[41m[m
+[32m+[m[32m          <span class="indispensable">必須</span>[m[41m[m
+[32m+[m[32m        </div>[m[41m[m
+[32m+[m[32m        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>[m[41m[m
+[32m+[m[32m        <div class="weight-bold-text">[m[41m[m
+[32m+[m[32m          商品の状態[m[41m[m
+[32m+[m[32m          <span class="indispensable">必須</span>[m[41m[m
+[32m+[m[32m        </div>[m[41m[m
+[32m+[m[32m        <%= f.collection_select(:condition_id, Condition.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>[m[41m[m
+[32m+[m[32m      </div>[m[41m[m
+[32m+[m[32m    </div>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    <div class="items-detail">[m[41m[m
+[32m+[m[32m      <div class="weight-bold-text question-text">[m[41m[m
+[32m+[m[32m        <span>配送について</span>[m[41m[m
+[32m+[m[32m        <a class="question" href="#">?</a>[m[41m[m
+[32m+[m[32m      </div>[m[41m[m
+[32m+[m[32m      <div class="form">[m[41m[m
+[32m+[m[32m        <div class="weight-bold-text">[m[41m[m
+[32m+[m[32m          配送料の負担[m[41m[m
+[32m+[m[32m          <span class="indispensable">必須</span>[m[41m[m
+[32m+[m[32m        </div>[m[41m[m
+[32m+[m[32m        <%= f.collection_select(:shipping_cost_id, ShippingCost.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>[m[41m[m
+[32m+[m[32m        <div class="weight-bold-text">[m[41m[m
+[32m+[m[32m          発送元の地域[m[41m[m
+[32m+[m[32m          <span class="indispensable">必須</span>[m[41m[m
+[32m+[m[32m        </div>[m[41m[m
+[32m+[m[32m        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>[m[41m[m
+[32m+[m[32m        <div class="weight-bold-text">[m[41m[m
+[32m+[m[32m          発送までの日数[m[41m[m
+[32m+[m[32m          <span class="indispensable">必須</span>[m[41m[m
+[32m+[m[32m        </div>[m[41m[m
+[32m+[m[32m        <%= f.collection_select(:shipping_time_id, ShippingTime.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>[m[41m[m
+[32m+[m[32m      </div>[m[41m[m
+[32m+[m[32m    </div>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    <div class="sell-price">[m[41m[m
+[32m+[m[32m      <div class="weight-bold-text question-text">[m[41m[m
+[32m+[m[32m        <span>販売価格<br>(¥300〜9,999,999)</span>[m[41m[m
+[32m+[m[32m        <a class="question" href="#">?</a>[m[41m[m
+[32m+[m[32m      </div>[m[41m[m
+[32m+[m[32m      <div>[m[41m[m
+[32m+[m[32m        <div class="price-content">[m[41m[m
+[32m+[m[32m          <div class="price-text">[m[41m[m
+[32m+[m[32m            <span>価格</span>[m[41m[m
+[32m+[m[32m            <span class="indispensable">必須</span>[m[41m[m
+[32m+[m[32m          </div>[m[41m[m
+[32m+[m[32m          <span class="sell-yen">¥</span>[m[41m[m
+[32m+[m[32m          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>[m[41m[m
+[32m+[m[32m        </div>[m[41m[m
+[32m+[m[32m        <div class="price-content">[m[41m[m
+[32m+[m[32m          <span>販売手数料 (10%)</span>[m[41m[m
+[32m+[m[32m          <span>[m[41m[m
+[32m+[m[32m            <span id='add-tax-price'></span>円[m[41m[m
+[32m+[m[32m          </span>[m[41m[m
+[32m+[m[32m        </div>[m[41m[m
+[32m+[m[32m        <div class="price-content">[m[41m[m
+[32m+[m[32m          <span>販売利益</span>[m[41m[m
+[32m+[m[32m          <span>[m[41m[m
+[32m+[m[32m            <span id='profit'></span>円[m[41m[m
+[32m+[m[32m          </span>[m[41m[m
+[32m+[m[32m        </div>[m[41m[m
+[32m+[m[32m      </div>[m[41m[m
+[32m+[m[32m    </div>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    <div class="caution">[m[41m[m
+[32m+[m[32m      <p class="sentence">[m[41m[m
+[32m+[m[32m        <a href="#">禁止されている出品、</a>[m[41m[m
+[32m+[m[32m        <a href="#">行為</a>[m[41m[m
+[32m+[m[32m        を必ずご確認ください。[m[41m[m
+[32m+[m[32m      </p>[m[41m[m
+[32m+[m[32m      <p class="sentence">[m[41m[m
+[32m+[m[32m        またブランド品でシリアルナンバー等がある場合はご記載ください。[m[41m[m
+[32m+[m[32m        <a href="#">偽ブランドの販売</a>[m[41m[m
+[32m+[m[32m        は犯罪であり処罰される可能性があります。[m[41m[m
+[32m+[m[32m      </p>[m[41m[m
+[32m+[m[32m      <p class="sentence">[m[41m[m
+[32m+[m[32m        また、出品をもちまして[m[41m[m
+[32m+[m[32m        <a href="#">加盟店規約</a>[m[41m[m
+[32m+[m[32m        に同意したことになります。[m[41m[m
+[32m+[m[32m      </p>[m[41m[m
+[32m+[m[32m    </div>[m[41m[m
+[32m+[m[32m    <div class="sell-btn-contents">[m[41m[m
+[32m+[m[32m      <%= f.submit "出品する" ,class:"sell-btn" %>[m[41m[m
+[32m+[m[32m      <%=link_to 'もどる', root_path, class:"back-btn" %>[m[41m[m
+[32m+[m[32m    </div>[m[41m[m
+[32m+[m[32m  </div>[m[41m[m
+[32m+[m[32m<% end %>[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  <footer class="items-sell-footer">[m[41m[m
+[32m+[m[32m    <ul class="menu">[m[41m[m
+[32m+[m[32m      <li><a href="#">プライバシーポリシー</a></li>[m[41m[m
+[32m+[m[32m      <li><a href="#">フリマ利用規約</a></li>[m[41m[m
+[32m+[m[32m      <li><a href="#">特定商取引に関する表記</a></li>[m[41m[m
+[32m+[m[32m    </ul>[m[41m[m
+[32m+[m[32m    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>[m[41m[m
+[32m+[m[32m    <p class="inc">[m[41m[m
+[32m+[m[32m      ©︎Furima,Inc.[m[41m[m
+[32m+[m[32m    </p>[m[41m[m
+[32m+[m[32m  </footer>[m[41m[m
+ </div>[m
+\ No newline at end of file[m
+[1mdiff --git "a/app/views/items/new.html.erb\357\200\272Zone.Identifier" "b/app/views/items/new.html.erb\357\200\272Zone.Identifier"[m
+[1mdeleted file mode 100644[m
+[1mindex 2fcf64c..0000000[m
+Binary files "a/app/views/items/new.html.erb\357\200\272Zone.Identifier" and /dev/null differ
+[1mdiff --git "a/app/views/items/show.html.erb\357\200\272Zone.Identifier" "b/app/views/items/show.html.erb\357\200\272Zone.Identifier"[m
+[1mdeleted file mode 100644[m
+[1mindex 2fcf64c..0000000[m
+Binary files "a/app/views/items/show.html.erb\357\200\272Zone.Identifier" and /dev/null differ
+[1mdiff --git a/config/application.rb b/config/application.rb[m
+[1mindex 71f8dda..a073e37 100644[m
+[1m--- a/config/application.rb[m
+[1m+++ b/config/application.rb[m
+[36m@@ -1,28 +1,28 @@[m
+[31m-require_relative "boot"[m
+[31m-[m
+[31m-require "rails/all"[m
+[31m-[m
+[31m-# Require the gems listed in Gemfile, including any gems[m
+[31m-# you've limited to :test, :development, or :production.[m
+[31m-Bundler.require(*Rails.groups)[m
+[31m-[m
+[31m-module Furima42438[m
+[31m-  class Application < Rails::Application[m
+[31m-    # Initialize configuration defaults for originally generated Rails version.[m
+[31m-    config.load_defaults 7.1[m
+[31m-[m
+[31m-    config.active_storage.variant_processor = :mini_magick[m
+[31m-    # Please, add to the `ignore` list any other `lib` subdirectories that do[m
+[31m-    # not contain `.rb` files, or that should not be reloaded or eager loaded.[m
+[31m-    # Common ones are `templates`, `generators`, or `middleware`, for example.[m
+[31m-    config.autoload_lib(ignore: %w(assets tasks))[m
+[31m-[m
+[31m-    # Configuration for the application, engines, and railties goes here.[m
+[31m-    #[m
+[31m-    # These settings can be overridden in specific environments using the files[m
+[31m-    # in config/environments, which are processed later.[m
+[31m-    #[m
+[31m-    # config.time_zone = "Central Time (US & Canada)"[m
+[31m-    # config.eager_load_paths << Rails.root.join("extras")[m
+[31m-  end[m
+[31m-end[m
+[32m+[m[32mrequire_relative "boot"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mrequire "rails/all"[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Require the gems listed in Gemfile, including any gems[m[41m[m
+[32m+[m[32m# you've limited to :test, :development, or :production.[m[41m[m
+[32m+[m[32mBundler.require(*Rails.groups)[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mmodule Furima42438[m[41m[m
+[32m+[m[32m  class Application < Rails::Application[m[41m[m
+[32m+[m[32m    # Initialize configuration defaults for originally generated Rails version.[m[41m[m
+[32m+[m[32m    config.load_defaults 7.1[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    config.active_storage.variant_processor = :mini_magick[m[41m[m
+[32m+[m[32m    # Please, add to the `ignore` list any other `lib` subdirectories that do[m[41m[m
+[32m+[m[32m    # not contain `.rb` files, or that should not be reloaded or eager loaded.[m[41m[m
+[32m+[m[32m    # Common ones are `templates`, `generators`, or `middleware`, for example.[m[41m[m
+[32m+[m[32m    config.autoload_lib(ignore: %w(assets tasks))[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    # Configuration for the application, engines, and railties goes here.[m[41m[m
+[32m+[m[32m    #[m[41m[m
+[32m+[m[32m    # These settings can be overridden in specific environments using the files[m[41m[m
+[32m+[m[32m    # in config/environments, which are processed later.[m[41m[m
+[32m+[m[32m    #[m[41m[m
+[32m+[m[32m    # config.time_zone = "Central Time (US & Canada)"[m[41m[m
+[32m+[m[32m    # config.eager_load_paths << Rails.root.join("extras")[m[41m[m
+[32m+[m[32m  end[m[41m[m
+[32m+[m[32mend[m[41m[m
+[1mdiff --git a/config/importmap.rb b/config/importmap.rb[m
+[1mindex 7cc7269..e9b224c 100644[m
+[1m--- a/config/importmap.rb[m
+[1m+++ b/config/importmap.rb[m
+[36m@@ -1,8 +1,8 @@[m
+[31m-# Pin npm packages by running ./bin/importmap[m
+[31m-[m
+[31m-pin "application"[m
+[31m-pin "@hotwired/turbo-rails", to: "turbo.min.js"[m
+[31m-pin "@hotwired/stimulus", to: "stimulus.min.js"[m
+[31m-pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"[m
+[31m-pin_all_from "app/javascript/controllers", under: "controllers"[m
+[32m+[m[32m# Pin npm packages by running ./bin/importmap[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mpin "application"[m[41m[m
+[32m+[m[32mpin "@hotwired/turbo-rails", to: "turbo.min.js"[m[41m[m
+[32m+[m[32mpin "@hotwired/stimulus", to: "stimulus.min.js"[m[41m[m
+[32m+[m[32mpin "@hotwired/stimulus-loading", to: "stimulus-loading.js"[m[41m[m
+[32m+[m[32mpin_all_from "app/javascript/controllers", under: "controllers"[m[41m[m
+ pin "item_price", to: "item_price.js"[m
+\ No newline at end of file[m
+[1mdiff --git a/config/routes.rb b/config/routes.rb[m
+[1mindex a67df79..2c9dde5 100644[m
+[1m--- a/config/routes.rb[m
+[1m+++ b/config/routes.rb[m
+[36m@@ -1,12 +1,12 @@[m
+[31m-Rails.application.routes.draw do[m
+[31m-  devise_for :users[m
+[31m-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html[m
+[31m-[m
+[31m-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.[m
+[31m-  # Can be used by load balancers and uptime monitors to verify that the app is live.[m
+[31m-  get "up" => "rails/health#show", as: :rails_health_check[m
+[31m-[m
+[31m-  # Defines the root path route ("/")[m
+[31m-  root "items#index"[m
+[31m-  resources :items, only: [:index, :new, :create, :show, :edit, :update][m
+[31m-end[m
+[32m+[m[32mRails.application.routes.draw do[m[41m[m
+[32m+[m[32m  devise_for :users[m[41m[m
+[32m+[m[32m  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.[m[41m[m
+[32m+[m[32m  # Can be used by load balancers and uptime monitors to verify that the app is live.[m[41m[m
+[32m+[m[32m  get "up" => "rails/health#show", as: :rails_health_check[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  # Defines the root path route ("/")[m[41m[m
+[32m+[m[32m  root "items#index"[m[41m[m
+[32m+[m[32m  resources :items, only: [:index, :new, :create, :show, :edit, :update][m[41m[m
+[32m+[m[32mend[m[41m[m
+[1mdiff --git a/db/migrate/20260521014623_create_items.rb b/db/migrate/20260521014623_create_items.rb[m
+[1mindex 1a01292..6db53d0 100644[m
+[1m--- a/db/migrate/20260521014623_create_items.rb[m
+[1m+++ b/db/migrate/20260521014623_create_items.rb[m
+[36m@@ -1,17 +1,17 @@[m
+[31m-class CreateItems < ActiveRecord::Migration[7.1][m
+[31m-  def change[m
+[31m-    create_table :items do |t|[m
+[31m-      t.string     :name,             null: false[m
+[31m-      t.text       :description,      null: false[m
+[31m-      t.integer    :category_id,      null: false[m
+[31m-      t.integer    :condition_id,     null: false[m
+[31m-      t.integer    :shipping_cost_id, null: false[m
+[31m-      t.integer    :prefecture_id,    null: false[m
+[31m-      t.integer    :shipping_time_id, null: false[m
+[31m-      t.integer    :price,            null: false[m
+[31m-      t.references :user,             null: false, foreign_key: true[m
+[31m-[m
+[31m-      t.timestamps[m
+[31m-    end[m
+[31m-  end[m
+[31m-end[m
+[32m+[m[32mclass CreateItems < ActiveRecord::Migration[7.1][m[41m[m
+[32m+[m[32m  def change[m[41m[m
+[32m+[m[32m    create_table :items do |t|[m[41m[m
+[32m+[m[32m      t.string     :name,             null: false[m[41m[m
+[32m+[m[32m      t.text       :description,      null: false[m[41m[m
+[32m+[m[32m      t.integer    :category_id,      null: false[m[41m[m
+[32m+[m[32m      t.integer    :condition_id,     null: false[m[41m[m
+[32m+[m[32m      t.integer    :shipping_cost_id, null: false[m[41m[m
+[32m+[m[32m      t.integer    :prefecture_id,    null: false[m[41m[m
+[32m+[m[32m      t.integer    :shipping_time_id, null: false[m[41m[m
+[32m+[m[32m      t.integer    :price,            null: false[m[41m[m
+[32m+[m[32m      t.references :user,             null: false, foreign_key: true[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m      t.timestamps[m[41m[m
+[32m+[m[32m    end[m[41m[m
+[32m+[m[32m  end[m[41m[m
+[32m+[m[32mend[m[41m[m
+[1mdiff --git a/db/migrate/20260521050058_create_active_storage_tables.active_storage.rb b/db/migrate/20260521050058_create_active_storage_tables.active_storage.rb[m
+[1mindex e4706aa..d0fc9ee 100644[m
+[1m--- a/db/migrate/20260521050058_create_active_storage_tables.active_storage.rb[m
+[1m+++ b/db/migrate/20260521050058_create_active_storage_tables.active_storage.rb[m
+[36m@@ -1,57 +1,57 @@[m
+[31m-# This migration comes from active_storage (originally 20170806125915)[m
+[31m-class CreateActiveStorageTables < ActiveRecord::Migration[7.0][m
+[31m-  def change[m
+[31m-    # Use Active Record's configured type for primary and foreign keys[m
+[31m-    primary_key_type, foreign_key_type = primary_and_foreign_key_types[m
+[31m-[m
+[31m-    create_table :active_storage_blobs, id: primary_key_type do |t|[m
+[31m-      t.string   :key,          null: false[m
+[31m-      t.string   :filename,     null: false[m
+[31m-      t.string   :content_type[m
+[31m-      t.text     :metadata[m
+[31m-      t.string   :service_name, null: false[m
+[31m-      t.bigint   :byte_size,    null: false[m
+[31m-      t.string   :checksum[m
+[31m-[m
+[31m-      if connection.supports_datetime_with_precision?[m
+[31m-        t.datetime :created_at, precision: 6, null: false[m
+[31m-      else[m
+[31m-        t.datetime :created_at, null: false[m
+[31m-      end[m
+[31m-[m
+[31m-      t.index [ :key ], unique: true[m
+[31m-    end[m
+[31m-[m
+[31m-    create_table :active_storage_attachments, id: primary_key_type do |t|[m
+[31m-      t.string     :name,     null: false[m
+[31m-      t.references :record,   null: false, polymorphic: true, index: false, type: foreign_key_type[m
+[31m-      t.references :blob,     null: false, type: foreign_key_type[m
+[31m-[m
+[31m-      if connection.supports_datetime_with_precision?[m
+[31m-        t.datetime :created_at, precision: 6, null: false[m
+[31m-      else[m
+[31m-        t.datetime :created_at, null: false[m
+[31m-      end[m
+[31m-[m
+[31m-      t.index [ :record_type, :record_id, :name, :blob_id ], name: :index_active_storage_attachments_uniqueness, unique: true[m
+[31m-      t.foreign_key :active_storage_blobs, column: :blob_id[m
+[31m-    end[m
+[31m-[m
+[31m-    create_table :active_storage_variant_records, id: primary_key_type do |t|[m
+[31m-      t.belongs_to :blob, null: false, index: false, type: foreign_key_type[m
+[31m-      t.string :variation_digest, null: false[m
+[31m-[m
+[31m-      t.index [ :blob_id, :variation_digest ], name: :index_active_storage_variant_records_uniqueness, unique: true[m
+[31m-      t.foreign_key :active_storage_blobs, column: :blob_id[m
+[31m-    end[m
+[31m-  end[m
+[31m-[m
+[31m-  private[m
+[31m-    def primary_and_foreign_key_types[m
+[31m-      config = Rails.configuration.generators[m
+[31m-      setting = config.options[config.orm][:primary_key_type][m
+[31m-      primary_key_type = setting || :primary_key[m
+[31m-      foreign_key_type = setting || :bigint[m
+[31m-      [primary_key_type, foreign_key_type][m
+[31m-    end[m
+[31m-end[m
+[32m+[m[32m# This migration comes from active_storage (originally 20170806125915)[m[41m[m
+[32m+[m[32mclass CreateActiveStorageTables < ActiveRecord::Migration[7.0][m[41m[m
+[32m+[m[32m  def change[m[41m[m
+[32m+[m[32m    # Use Active Record's configured type for primary and foreign keys[m[41m[m
+[32m+[m[32m    primary_key_type, foreign_key_type = primary_and_foreign_key_types[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    create_table :active_storage_blobs, id: primary_key_type do |t|[m[41m[m
+[32m+[m[32m      t.string   :key,          null: false[m[41m[m
+[32m+[m[32m      t.string   :filename,     null: false[m[41m[m
+[32m+[m[32m      t.string   :content_type[m[41m[m
+[32m+[m[32m      t.text     :metadata[m[41m[m
+[32m+[m[32m      t.string   :service_name, null: false[m[41m[m
+[32m+[m[32m      t.bigint   :byte_size,    null: false[m[41m[m
+[32m+[m[32m      t.string   :checksum[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m      if connection.supports_datetime_with_precision?[m[41m[m
+[32m+[m[32m        t.datetime :created_at, precision: 6, null: false[m[41m[m
+[32m+[m[32m      else[m[41m[m
+[32m+[m[32m        t.datetime :created_at, null: false[m[41m[m
+[32m+[m[32m      end[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m      t.index [ :key ], unique: true[m[41m[m
+[32m+[m[32m    end[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    create_table :active_storage_attachments, id: primary_key_type do |t|[m[41m[m
+[32m+[m[32m      t.string     :name,     null: false[m[41m[m
+[32m+[m[32m      t.references :record,   null: false, polymorphic: true, index: false, type: foreign_key_type[m[41m[m
+[32m+[m[32m      t.references :blob,     null: false, type: foreign_key_type[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m      if connection.supports_datetime_with_precision?[m[41m[m
+[32m+[m[32m        t.datetime :created_at, precision: 6, null: false[m[41m[m
+[32m+[m[32m      else[m[41m[m
+[32m+[m[32m        t.datetime :created_at, null: false[m[41m[m
+[32m+[m[32m      end[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m      t.index [ :record_type, :record_id, :name, :blob_id ], name: :index_active_storage_attachments_uniqueness, unique: true[m[41m[m
+[32m+[m[32m      t.foreign_key :active_storage_blobs, column: :blob_id[m[41m[m
+[32m+[m[32m    end[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    create_table :active_storage_variant_records, id: primary_key_type do |t|[m[41m[m
+[32m+[m[32m      t.belongs_to :blob, null: false, index: false, type: foreign_key_type[m[41m[m
+[32m+[m[32m      t.string :variation_digest, null: false[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m      t.index [ :blob_id, :variation_digest ], name: :index_active_storage_variant_records_uniqueness, unique: true[m[41m[m
+[32m+[m[32m      t.foreign_key :active_storage_blobs, column: :blob_id[m[41m[m
+[32m+[m[32m    end[m[41m[m
+[32m+[m[32m  end[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  private[m[41m[m
+[32m+[m[32m    def primary_and_foreign_key_types[m[41m[m
+[32m+[m[32m      config = Rails.configuration.generators[m[41m[m
+[32m+[m[32m      setting = config.options[config.orm][:primary_key_type][m[41m[m
+[32m+[m[32m      primary_key_type = setting || :primary_key[m[41m[m
+[32m+[m[32m      foreign_key_type = setting || :bigint[m[41m[m
+[32m+[m[32m      [primary_key_type, foreign_key_type][m[41m[m
+[32m+[m[32m    end[m[41m[m
+[32m+[m[32mend[m[41m[m
+[1mdiff --git a/db/schema.rb b/db/schema.rb[m
+[1mindex dbdf585..85500bb 100644[m
+[1m--- a/db/schema.rb[m
+[1m+++ b/db/schema.rb[m
+[36m@@ -1,78 +1,78 @@[m
+[31m-# This file is auto-generated from the current state of the database. Instead[m
+[31m-# of editing this file, please use the migrations feature of Active Record to[m
+[31m-# incrementally modify your database, and then regenerate this schema definition.[m
+[31m-#[m
+[31m-# This file is the source Rails uses to define your schema when running `bin/rails[m
+[31m-# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to[m
+[31m-# be faster and is potentially less error prone than running all of your[m
+[31m-# migrations from scratch. Old migrations may fail to apply correctly if those[m
+[31m-# migrations use external dependencies or application code.[m
+[31m-#[m
+[31m-# It's strongly recommended that you check this file into your version control system.[m
+[31m-[m
+[31m-ActiveRecord::Schema[7.1].define(version: 2026_05_21_050058) do[m
+[31m-  create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|[m
+[31m-    t.string "name", null: false[m
+[31m-    t.string "record_type", null: false[m
+[31m-    t.bigint "record_id", null: false[m
+[31m-    t.bigint "blob_id", null: false[m
+[31m-    t.datetime "created_at", null: false[m
+[31m-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"[m
+[31m-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true[m
+[31m-  end[m
+[31m-[m
+[31m-  create_table "active_storage_blobs", charset: "utf8mb3", force: :cascade do |t|[m
+[31m-    t.string "key", null: false[m
+[31m-    t.string "filename", null: false[m
+[31m-    t.string "content_type"[m
+[31m-    t.text "metadata"[m
+[31m-    t.string "service_name", null: false[m
+[31m-    t.bigint "byte_size", null: false[m
+[31m-    t.string "checksum"[m
+[31m-    t.datetime "created_at", null: false[m
+[31m-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true[m
+[31m-  end[m
+[31m-[m
+[31m-  create_table "active_storage_variant_records", charset: "utf8mb3", force: :cascade do |t|[m
+[31m-    t.bigint "blob_id", null: false[m
+[31m-    t.string "variation_digest", null: false[m
+[31m-    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true[m
+[31m-  end[m
+[31m-[m
+[31m-  create_table "items", charset: "utf8mb3", force: :cascade do |t|[m
+[31m-    t.string "name", null: false[m
+[31m-    t.text "description", null: false[m
+[31m-    t.integer "category_id", null: false[m
+[31m-    t.integer "condition_id", null: false[m
+[31m-    t.integer "shipping_cost_id", null: false[m
+[31m-    t.integer "prefecture_id", null: false[m
+[31m-    t.integer "shipping_time_id", null: false[m
+[31m-    t.integer "price", null: false[m
+[31m-    t.bigint "user_id", null: false[m
+[31m-    t.datetime "created_at", null: false[m
+[31m-    t.datetime "updated_at", null: false[m
+[31m-    t.index ["user_id"], name: "index_items_on_user_id"[m
+[31m-  end[m
+[31m-[m
+[31m-  create_table "users", charset: "utf8mb3", force: :cascade do |t|[m
+[31m-    t.string "email", default: "", null: false[m
+[31m-    t.string "encrypted_password", default: "", null: false[m
+[31m-    t.string "nickname", null: false[m
+[31m-    t.string "first_name", null: false[m
+[31m-    t.string "first_name_kana", null: false[m
+[31m-    t.string "last_name", null: false[m
+[31m-    t.string "last_name_kana", null: false[m
+[31m-    t.date "birth_date", null: false[m
+[31m-    t.string "reset_password_token"[m
+[31m-    t.datetime "reset_password_sent_at"[m
+[31m-    t.datetime "remember_created_at"[m
+[31m-    t.datetime "created_at", null: false[m
+[31m-    t.datetime "updated_at", null: false[m
+[31m-    t.index ["email"], name: "index_users_on_email", unique: true[m
+[31m-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true[m
+[31m-  end[m
+[31m-[m
+[31m-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"[m
+[31m-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"[m
+[31m-  add_foreign_key "items", "users"[m
+[31m-end[m
+[32m+[m[32m# This file is auto-generated from the current state of the database. Instead[m[41m[m
+[32m+[m[32m# of editing this file, please use the migrations feature of Active Record to[m[41m[m
+[32m+[m[32m# incrementally modify your database, and then regenerate this schema definition.[m[41m[m
+[32m+[m[32m#[m[41m[m
+[32m+[m[32m# This file is the source Rails uses to define your schema when running `bin/rails[m[41m[m
+[32m+[m[32m# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to[m[41m[m
+[32m+[m[32m# be faster and is potentially less error prone than running all of your[m[41m[m
+[32m+[m[32m# migrations from scratch. Old migrations may fail to apply correctly if those[m[41m[m
+[32m+[m[32m# migrations use external dependencies or application code.[m[41m[m
+[32m+[m[32m#[m[41m[m
+[32m+[m[32m# It's strongly recommended that you check this file into your version control system.[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mActiveRecord::Schema[7.1].define(version: 2026_05_21_050058) do[m[41m[m
+[32m+[m[32m  create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|[m[41m[m
+[32m+[m[32m    t.string "name", null: false[m[41m[m
+[32m+[m[32m    t.string "record_type", null: false[m[41m[m
+[32m+[m[32m    t.bigint "record_id", null: false[m[41m[m
+[32m+[m[32m    t.bigint "blob_id", null: false[m[41m[m
+[32m+[m[32m    t.datetime "created_at", null: false[m[41m[m
+[32m+[m[32m    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"[m[41m[m
+[32m+[m[32m    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true[m[41m[m
+[32m+[m[32m  end[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  create_table "active_storage_blobs", charset: "utf8mb3", force: :cascade do |t|[m[41m[m
+[32m+[m[32m    t.string "key", null: false[m[41m[m
+[32m+[m[32m    t.string "filename", null: false[m[41m[m
+[32m+[m[32m    t.string "content_type"[m[41m[m
+[32m+[m[32m    t.text "metadata"[m[41m[m
+[32m+[m[32m    t.string "service_name", null: false[m[41m[m
+[32m+[m[32m    t.bigint "byte_size", null: false[m[41m[m
+[32m+[m[32m    t.string "checksum"[m[41m[m
+[32m+[m[32m    t.datetime "created_at", null: false[m[41m[m
+[32m+[m[32m    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true[m[41m[m
+[32m+[m[32m  end[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  create_table "active_storage_variant_records", charset: "utf8mb3", force: :cascade do |t|[m[41m[m
+[32m+[m[32m    t.bigint "blob_id", null: false[m[41m[m
+[32m+[m[32m    t.string "variation_digest", null: false[m[41m[m
+[32m+[m[32m    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true[m[41m[m
+[32m+[m[32m  end[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  create_table "items", charset: "utf8mb3", force: :cascade do |t|[m[41m[m
+[32m+[m[32m    t.string "name", null: false[m[41m[m
+[32m+[m[32m    t.text "description", null: false[m[41m[m
+[32m+[m[32m    t.integer "category_id", null: false[m[41m[m
+[32m+[m[32m    t.integer "condition_id", null: false[m[41m[m
+[32m+[m[32m    t.integer "shipping_cost_id", null: false[m[41m[m
+[32m+[m[32m    t.integer "prefecture_id", null: false[m[41m[m
+[32m+[m[32m    t.integer "shipping_time_id", null: false[m[41m[m
+[32m+[m[32m    t.integer "price", null: false[m[41m[m
+[32m+[m[32m    t.bigint "user_id", null: false[m[41m[m
+[32m+[m[32m    t.datetime "created_at", null: false[m[41m[m
+[32m+[m[32m    t.datetime "updated_at", null: false[m[41m[m
+[32m+[m[32m    t.index ["user_id"], name: "index_items_on_user_id"[m[41m[m
+[32m+[m[32m  end[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  create_table "users", charset: "utf8mb3", force: :cascade do |t|[m[41m[m
+[32m+[m[32m    t.string "email", default: "", null: false[m[41m[m
+[32m+[m[32m    t.string "encrypted_password", default: "", null: false[m[41m[m
+[32m+[m[32m    t.string "nickname", null: false[m[41m[m
+[32m+[m[32m    t.string "first_name", null: false[m[41m[m
+[32m+[m[32m    t.string "first_name_kana", null: false[m[41m[m
+[32m+[m[32m    t.string "last_name", null: false[m[41m[m
+[32m+[m[32m    t.string "last_name_kana", null: false[m[41m[m
+[32m+[m[32m    t.date "birth_date", null: false[m[41m[m
+[32m+[m[32m    t.string "reset_password_token"[m[41m[m
+[32m+[m[32m    t.datetime "reset_password_sent_at"[m[41m[m
+[32m+[m[32m    t.datetime "remember_created_at"[m[41m[m
+[32m+[m[32m    t.datetime "created_at", null: false[m[41m[m
+[32m+[m[32m    t.datetime "updated_at", null: false[m[41m[m
+[32m+[m[32m    t.index ["email"], name: "index_users_on_email", unique: true[m[41m[m
+[32m+[m[32m    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true[m[41m[m
+[32m+[m[32m  end[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"[m[41m[m
+[32m+[m[32m  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"[m[41m[m
+[32m+[m[32m  add_foreign_key "items", "users"[m[41m[m
+[32m+[m[32mend[m[41m[m
+[1mdiff --git "a/public/images/test_image.png\357\200\272Zone.Identifier" "b/public/images/test_image.png\357\200\272Zone.Identifier"[m
+[1mdeleted file mode 100644[m
+[1mindex 7ff70c6..0000000[m
+Binary files "a/public/images/test_image.png\357\200\272Zone.Identifier" and /dev/null differ
