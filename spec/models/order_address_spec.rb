@@ -5,7 +5,6 @@ RSpec.describe OrderAddress, type: :model do
     @order_address = FactoryBot.build(:order_address)
   end
   describe '配送先情報の保存' do
-
     context '内容に問題ない場合' do
       it 'すべての情報が正しく入力されれば保存できること' do
         expect(@order_address).to be_valid
@@ -24,7 +23,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'post_codeに-がついてないと保存できない' do
         @order_address.post_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@order_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
       it 'prefecture_idの値が空では保存できない' do
         @order_address.prefecture_id = ''
@@ -54,22 +53,22 @@ RSpec.describe OrderAddress, type: :model do
       it 'telephone_numberが半角数字ではない場合保存できない' do
         @order_address.telephone_number = '０９０１２３４５６７８'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Telephone number is invalid.")
+        expect(@order_address.errors.full_messages).to include('Telephone number is invalid.')
       end
       it 'telephone_numberに-が入っていると保存できない' do
         @order_address.telephone_number = '090-1234-5678'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Telephone number is invalid.")
+        expect(@order_address.errors.full_messages).to include('Telephone number is invalid.')
       end
       it 'telephone_numberが9桁の場合は保存できない' do
         @order_address.telephone_number = '090123567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Telephone number is invalid.")
+        expect(@order_address.errors.full_messages).to include('Telephone number is invalid.')
       end
       it 'telephone_numberが12桁の場合は保存できない' do
         @order_address.telephone_number = '090123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Telephone number is invalid.")
+        expect(@order_address.errors.full_messages).to include('Telephone number is invalid.')
       end
       it 'user_idがnilでは保存できない' do
         @order_address.user_id = nil
